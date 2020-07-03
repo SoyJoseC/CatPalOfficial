@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!--<link src="{% static 'bootstrap-4.4.1-dist/css/bootstrap.css' %}" rel="stylesheet"/>-->
+    <!--<link src="{% static 'bootstrap-4.5.0-dist/css/bootstrap.min.css' %}" rel="stylesheet"/>-->
+     <link src="{% static 'css/sidenav.css' %}" rel="stylesheet"/>
+    <script src="{% static 'js/form2.js' %}"></script>
+    <script src="{% static 'bootstrap-4.5.0-dist/js/jquery-3.3.1.slim.min.js' %}" ></script>
+    <script src="{% static 'bootstrap-4.5.0-dist/js/bootstrap.min.js' %}"></script>
+    {% block title %}<title>Sticky Footer Navbar Template · Bootstrap</title> {% endblock %}
+</head>
+
+<body>
+
+<style>
+.nav1{
+    height: 30%;
+    overflow:scroll;
+}
+.cat_container{
+    height: 30%;
+    overflow:scroll;
+}
+#aceptar{
+    margin: 2px;
+    float: right;
+}
+
+.categories{
+
+    padding-right: 4px;
+    margin: 10px;
+    float: left;
+}
+
+.categories:hover{
+    background-color: rgba(182, 182, 182, 0.829);
+}
+
+.element{
+    height: 50px;
+    margin: 2px;
+    background-color: rgba(182, 182, 182, 0.425);
+
+}
+
+.element:hover{
+    background-color: rgba(182, 182, 182, 0.829);
+
+}
+
+
+</style>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>
