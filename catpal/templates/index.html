@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>CatPal</title>
+{% endblock %}
+{% block content%}
     <h1>Documents</h1>
 <ul>
     {% for doc in object_list %}
         <li>
             <a href="{% url 'article-detail' doc.pk %}">{{doc.title}}</a>
-            {{doc.tags}}
+            {{doc.tags}} - <small><a href="{% url 'update_doc' doc.pk %}">(Edit)</a></small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
         </li>
 
 
     {% endfor %}
 </ul>
-</body>
-</html>
+{% endblock %}

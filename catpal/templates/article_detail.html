@@ -1,4 +1,23 @@
 {% extends 'base.html' %}
+
+{% block title %}
+    <title>Docs Details</title>
+{% endblock %}
+
+
 {% block content%}
 <h1>{{document.title}}</h1>
+
+Tags: {{document.tags}} <small><a href="{% url 'update_doc' document.pk %}">(Edit)</a></small>-<small><a href="{% url 'delete_doc' document.pk %}">(Delete)</a></small>
+<br />
+<hr>
+<h5>Categories</h5>
+<br />
+<ul>
+    {% for element in document.categories.all %}
+        <li>{{element}}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'home' %}" class="btn btn-secondary" >Home</a>
 {% endblock %}

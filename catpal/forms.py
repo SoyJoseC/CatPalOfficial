@@ -1,10 +1,28 @@
 from django import forms
 from catpal.models import Document, Category
-"""
+
+
 class DocumentForm(forms.ModelForm):
 
-    title = forms.CharField()
-    tags = forms.CharField()
-    categories = forms.CheckboxSelectMultiple(Category)
+    class Meta:
+        model = Document
+        fields = '__all__'
 
-"""
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'tags': forms.TextInput(attrs={'class': 'form-control'}),
+            'categories': forms.CheckboxSelectMultiple(attrs={'class': 'form-checkform-check'}),
+            'doc_id': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+class EditDocumentForm(forms.ModelForm):
+
+    class Meta:
+        model = Document
+        fields = ['tags', 'categories']
+
+        widgets = {
+            #'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'tags': forms.TextInput(attrs={'class': 'form-control'}),
+            'categories': forms.CheckboxSelectMultiple(attrs={'class': 'form-checkform-check'}),
+            #'doc_id': forms.TextInput(attrs={'class': 'form-control'}),
+        }

@@ -2,17 +2,17 @@
 
 
 {% block title %}
-    <title>Add Doc</title>
+    <title>Update Doc</title>
 {% endblock %}
 
 {% block content %}
-    <h1>Add Doc</h1>
+    <h1>{{document.title}}</h1>
 <br /> <br />
 <div class="form-group">
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">Save</button>
+    <button class="btn btn-secondary">Update</button>
 </form>
 </div>
     {% endblock %}

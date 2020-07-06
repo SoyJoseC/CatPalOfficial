@@ -2,7 +2,7 @@
 
 
 {% block title %}
-    <title>Add Doc</title>
+    <title>Register</title>
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,7 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">Save</button>
+    <button class="btn btn-secondary">Register</button>
 </form>
 </div>
     {% endblock %}
