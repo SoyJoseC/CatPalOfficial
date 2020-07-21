@@ -6,8 +6,10 @@
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
     <h1>Add Doc</h1>
 <br /> <br />
+
 <div class="form-group">
 <form method="post">
     {% csrf_token %}
@@ -15,4 +17,7 @@
     <button class="btn btn-secondary">Save</button>
 </form>
 </div>
+{% else %}
+    You're not allowed here!
+{% endif%}
     {% endblock %}

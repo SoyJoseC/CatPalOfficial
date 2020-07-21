@@ -6,8 +6,14 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{document.title}}</h1>
+{% if user.is_authenticated %}
+    <h1>Update {{document.title}}</h1>
 <br /> <br />
+<style>
+    .form-group p{
+        overflow: scroll;
+    }
+</style>
 <div class="form-group">
 <form method="post">
     {% csrf_token %}
@@ -15,4 +21,8 @@
     <button class="btn btn-secondary">Update</button>
 </form>
 </div>
+
+{% else %}
+    You're not allowed here!
+{% endif%}
     {% endblock %}

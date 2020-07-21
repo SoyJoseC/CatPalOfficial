@@ -9,7 +9,11 @@
     {% for doc in object_list %}
         <li>
             <a href="{% url 'article-detail' doc.pk %}">{{doc.title}}</a>
-            {{doc.tags}} - <small><a href="{% url 'update_doc' doc.pk %}">(Edit)</a></small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
+            {{doc.tags}}
+            {% if user.is_authenticated %}
+            <small><a href="{% url 'update_doc' doc.pk %}">(Edit)</a>
+            </small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
+            {% endif %}
         </li>
 
 

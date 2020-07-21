@@ -21,6 +21,7 @@ class AddDocumentView(CreateView):
     model = Document
     form_class = DocumentForm
     template_name = 'add_doc.html'
+    success_url = reverse_lazy('home')
     #fields = '__all__'
 
 
@@ -35,4 +36,6 @@ class DeleteDocumentView(DeleteView):
     model = Document
     template_name = 'delete_doc.html'
     success_url = reverse_lazy('home')
+
+
 
