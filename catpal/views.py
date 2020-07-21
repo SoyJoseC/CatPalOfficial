@@ -12,6 +12,7 @@ class HomeView(ListView):
     ordering = ['-id'] #for order the list by id descendetly
 
 
+
 class ArticleDetailView(DetailView):
     model = Document
     template_name = 'article_detail.html'
@@ -38,4 +39,19 @@ class DeleteDocumentView(DeleteView):
     success_url = reverse_lazy('home')
 
 
+def initial(request):
+    from catpal.models import Document
+    import json
+
+    #with open ('static/to_clasify_21-07-2020_14-02-24.json', "r") as read_file:
+     #   data = json.load(read_file)
+
+    printable = "sas"
+
+    d = Document(title='Creado desde BulkAdd', tags='bulky')
+    d.save()
+
+
+
+    return render(request, 'initial.html', {"var": printable})
 
