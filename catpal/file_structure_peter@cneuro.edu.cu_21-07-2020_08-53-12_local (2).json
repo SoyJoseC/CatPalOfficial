@@ -1,0 +1,1737 @@
+{
+    "Local": {
+        "0000000000leer": {
+            "valor": null
+        },
+        "000ToClassify": {
+            "BillingsLike": {
+                "valor": null
+            },
+            "covariance": {
+                "valor": null
+            },
+            "disease progression": {
+                "valor": null
+            }
+        },
+        "01 Health Incidents": {
+            "0Curate": {
+                "valor": null
+            },
+            "AnimalModels": {
+                "valor": null
+            },
+            "Auditory": {
+                "valor": null
+            },
+            "Cuban Docs": {
+                "valor": null
+            },
+            "DSM_ICD": {
+                "valor": null
+            },
+            "EMW": {
+                "valor": null
+            },
+            "FND": {
+                "valor": null
+            },
+            "Head Injury": {
+                "valor": null
+            },
+            "Imaging": {
+                "valor": null
+            },
+            "JAMA_reactions": {
+                "valor": null
+            },
+            "News": {
+                "valor": null
+            },
+            "Psychological": {
+                "valor": null
+            },
+            "SleepHeadAche": {
+                "valor": null
+            },
+            "Toxic": {
+                "valor": null
+            },
+            "US": {
+                "valor": null
+            },
+            "Vestibular": {
+                "valor": null
+            }
+        },
+        "02.Funding": {
+            "FWOMOST 2016": {
+                "valor": null
+            },
+            "NSFC 2016": {
+                "01.Papers": {
+                    "Anatomical Bases EEG": {
+                        "valor": null
+                    },
+                    "Anti Makeig": {
+                        "GeneralStats": {
+                            "valor": null
+                        },
+                        "ICA (1)": {
+                            "valor": null
+                        },
+                        "Stats controversy": {
+                            "valor": null
+                        }
+                    },
+                    "CCA EGOG": {
+                        "valor": null
+                    },
+                    "IEEE Review": {
+                        "valor": null
+                    },
+                    "IQ_NIMG": {
+                        "valor": null
+                    },
+                    "Jerry": {
+                        "valor": null
+                    },
+                    "Music Frontiers 2015": {
+                        "ERP": {
+                            "MMR": {
+                                "valor": null
+                            },
+                            "besson": {
+                                "valor": null
+                            },
+                            "positivity": {
+                                "valor": null
+                            }
+                        },
+                        "Introduction": {
+                            "Adults": {
+                                "valor": null
+                            },
+                            "Behavior": {
+                                "valor": null
+                            },
+                            "Biomarkers (1)": {
+                                "valor": null
+                            },
+                            "MT": {
+                                "valor": null
+                            },
+                            "children": {
+                                "valor": null
+                            }
+                        },
+                        "methods (1)": {
+                            "valor": null
+                        }
+                    },
+                    "unsorted (9)": {
+                        "valor": null
+                    }
+                }
+            },
+            "NSFC2018": {
+                "valor": null
+            },
+            "TEAM_VLIR 2016": {
+                "Affective": {
+                    "valor": null
+                },
+                "Biomarkers (2)": {
+                    "valor": null
+                },
+                "Care Systems": {
+                    "valor": null
+                },
+                "Cognitive training": {
+                    "valor": null
+                },
+                "EEG (5)": {
+                    "valor": null
+                },
+                "Epidemiology": {
+                    "valor": null
+                },
+                "Gear": {
+                    "valor": null
+                },
+                "New_Techonogies": {
+                    "valor": null
+                },
+                "Pathophys": {
+                    "valor": null
+                },
+                "Policy (1)": {
+                    "valor": null
+                },
+                "Retina (1)": {
+                    "valor": null
+                },
+                "Risk": {
+                    "valor": null
+                },
+                "Treatment": {
+                    "valor": null
+                }
+            },
+            "cutting edge 2016": {
+                "Mitchell": {
+                    "valor": null
+                },
+                "Schwartzlike": {
+                    "valor": null
+                }
+            },
+            "unsorted (8)": {
+                "valor": null
+            }
+        },
+        "03.Brain Science": {
+            "Affective Neuroscience": {
+                "Kendrick": {
+                    "valor": null
+                }
+            },
+            "AnimalModels": {
+                "Monkeys": {
+                    "valor": null
+                },
+                "Naotaka": {
+                    "valor": null
+                }
+            },
+            "Basic Neurophysiol": {
+                "Plasticity": {
+                    "valor": null
+                }
+            },
+            "Brain bank": {
+                "valor": null
+            },
+            "Cognitive Neuroscience": {
+                "Atention": {
+                    "valor": null
+                },
+                "Bea": {
+                    "valor": null
+                },
+                "Brian": {
+                    "valor": null
+                },
+                "Cognición": {
+                    "valor": null
+                },
+                "Cogntive training": {
+                    "valor": null
+                },
+                "Face": {
+                    "valor": null
+                },
+                "IQ": {
+                    "valor": null
+                },
+                "Learning": {
+                    "valor": null
+                },
+                "Mindfulness": {
+                    "valor": null
+                },
+                "Music": {
+                    "valor": null
+                },
+                "Neuropsychology": {
+                    "valor": null
+                },
+                "Reaction Time": {
+                    "valor": null
+                },
+                "Religion": {
+                    "valor": null
+                },
+                "Social Neurosciences": {
+                    "valor": null
+                },
+                "Violence&Others": {
+                    "valor": null
+                }
+            },
+            "Disease": {
+                "Addiction": {
+                    "valor": null
+                },
+                "Auditory": {
+                    "valor": null
+                },
+                "Autismo": {
+                    "valor": null
+                },
+                "Biomarkers": {
+                    "valor": null
+                },
+                "Burden of Disease": {
+                    "valor": null
+                },
+                "CLINICAL TRIALS": {
+                    "valor": null
+                },
+                "Dementia": {
+                    "valor": null
+                },
+                "Depression": {
+                    "valor": null
+                },
+                "Disease Progression": {
+                    "valor": null
+                },
+                "Emotion": {
+                    "valor": null
+                },
+                "Epilepsia": {
+                    "valor": null
+                },
+                "Esclerosis multiple": {
+                    "valor": null
+                },
+                "Genes": {
+                    "valor": null
+                },
+                "Health Technology": {
+                    "valor": null
+                },
+                "Hipertension": {
+                    "valor": null
+                },
+                "Ischemia": {
+                    "valor": null
+                },
+                "Malnutricion": {
+                    "valor": null
+                },
+                "NatRevNeurol": {
+                    "valor": null
+                },
+                "Oftalmology": {
+                    "valor": null
+                },
+                "Optic": {
+                    "valor": null
+                },
+                "Parkinson’s": {
+                    "valor": null
+                },
+                "Precision Medicine": {
+                    "valor": null
+                },
+                "Psychiatric": {
+                    "valor": null
+                },
+                "Public Health": {
+                    "Economics": {
+                        "valor": null
+                    }
+                },
+                "Schizop": {
+                    "valor": null
+                },
+                "Stroke": {
+                    "valor": null
+                },
+                "Translational": {
+                    "valor": null
+                },
+                "Tumor": {
+                    "valor": null
+                },
+                "Twins": {
+                    "Twins Genetics": {
+                        "valor": null
+                    }
+                },
+                "Universal health coverage": {
+                    "valor": null
+                },
+                "stroke alzheimer": {
+                    "valor": null
+                }
+            },
+            "Neuoranatomy": {
+                "valor": null
+            },
+            "unsorted (7)": {
+                "valor": null
+            }
+        },
+        "04.HBM Neuroinf": {
+            "Brain Theory": {
+                "valor": null
+            },
+            "Complex network": {
+                "EEG (2)": {
+                    "valor": null
+                },
+                "HBM": {
+                    "valor": null
+                },
+                "Olaf": {
+                    "valor": null
+                }
+            },
+            "Computational Neuroscience": {
+                "Breakspear": {
+                    "valor": null
+                },
+                "Conduction velocity": {
+                    "valor": null
+                },
+                "DCM": {
+                    "valor": null
+                },
+                "Neural Mass": {
+                    "valor": null
+                },
+                "NeuralField": {
+                    "for Pedri": {
+                        "valor": null
+                    }
+                },
+                "NeuralModel": {
+                    "valor": null
+                },
+                "Oscilación": {
+                    "valor": null
+                }
+            },
+            "Dymaical Neuroimaging": {
+                "Artefacts": {
+                    "valor": null
+                },
+                "ECoG": {
+                    "valor": null
+                },
+                "EEG": {
+                    "valor": null
+                },
+                "EEG/fMRI": {
+                    "ICA": {
+                        "valor": null
+                    }
+                },
+                "ERBD": {
+                    "valor": null
+                },
+                "Impedancia": {
+                    "valor": null
+                },
+                "Inverse Problem": {
+                    "valor": null
+                },
+                "MEG": {
+                    "valor": null
+                },
+                "NIRS": {
+                    "valor": null
+                },
+                "Optogenetica": {
+                    "valor": null
+                },
+                "Reference": {
+                    "valor": null
+                },
+                "Steady State": {
+                    "valor": null
+                },
+                "TMS": {
+                    "valor": null
+                },
+                "fMRI": {
+                    "Neonatos": {
+                        "valor": null
+                    },
+                    "hrf": {
+                        "valor": null
+                    }
+                },
+                "laminar": {
+                    "valor": null
+                },
+                "monitoreo": {
+                    "valor": null
+                },
+                "monopole": {
+                    "valor": null
+                }
+            },
+            "HBM (1)": {
+                "valor": null
+            },
+            "Neurofisologia Clinica": {
+                "Anestesia + Conciencia": {
+                    "valor": null
+                },
+                "EMG": {
+                    "valor": null
+                },
+                "Sleep": {
+                    "valor": null
+                },
+                "consciouness": {
+                    "valor": null
+                },
+                "eeg (4)": {
+                    "valor": null
+                },
+                "spikes": {
+                    "valor": null
+                }
+            },
+            "Neuroinformatics": {
+                "Morfometria": {
+                    "valor": null
+                },
+                "infants": {
+                    "valor": null
+                }
+            },
+            "Restig State": {
+                "valor": null
+            },
+            "Workshop Chengdu": {
+                "Conectivity measures": {
+                    "valor": null
+                },
+                "Data": {
+                    "valor": null
+                },
+                "Reference (1)": {
+                    "valor": null
+                },
+                "monopolar": {
+                    "valor": null
+                }
+            },
+            "unsorted (6)": {
+                "valor": null
+            }
+        },
+        "05.Neurotechnology": {
+            "00 General": {
+                "valor": null
+            },
+            "01 Basic Technology": {
+                "011 Electrodes": {
+                    "valor": null
+                },
+                "012 Nano": {
+                    "valor": null
+                },
+                "013 Neuroengineering": {
+                    "valor": null
+                },
+                "014 Patents": {
+                    "valor": null
+                },
+                "MoBI": {
+                    "valor": null
+                }
+            },
+            "02 NT Sectors": {
+                "021 Pharmaceutical": {
+                    "0211 Pharmacogenetics": {
+                        "valor": null
+                    },
+                    "0212 Neurology": {
+                        "valor": null
+                    },
+                    "0213 Psychiatry": {
+                        "valor": null
+                    }
+                },
+                "022 Stem Cells Neurodegeneration": {
+                    "valor": null
+                },
+                "023 Neurodevices": {
+                    "0231 Neuroprosthetic": {
+                        "02311 Sensorio": {
+                            "valor": null
+                        },
+                        "02312 Motor Exoes": {
+                            "valor": null
+                        },
+                        "02313 BCI BMI Robotics": {
+                            "valor": null
+                        }
+                    },
+                    "0232 Neuromodulation": {
+                        "02321 Optogenetics": {
+                            "valor": null
+                        },
+                        "02322 DBS": {
+                            "valor": null
+                        },
+                        "02323 TMS TDS": {
+                            "valor": null
+                        },
+                        "02324 Peripheral Stim": {
+                            "valor": null
+                        },
+                        "02325 Technol/Methods": {
+                            "valor": null
+                        }
+                    },
+                    "0233 Neurosurgical": {
+                        "02331 Radiosurgical": {
+                            "valor": null
+                        },
+                        "02332 Navigation": {
+                            "valor": null
+                        },
+                        "02333 Neurovascular Interv": {
+                            "valor": null
+                        },
+                        "02334 Technology": {
+                            "valor": null
+                        }
+                    },
+                    "0234 Neurosoftware": {
+                        "02341 Neurogames": {
+                            "valor": null
+                        },
+                        "02342 Computed rehab emotion cogn": {
+                            "valor": null
+                        },
+                        "02343 Neurofeedback": {
+                            "valor": null
+                        }
+                    }
+                },
+                "024 Neurodiagnostic": {
+                    "0241 Nimg technology": {
+                        "valor": null
+                    },
+                    "0242 Diagnostic vitro": {
+                        "valor": null
+                    },
+                    "0243 Neuroinformatics": {
+                        "valor": null
+                    }
+                }
+            },
+            "03 Applications": {
+                "031 Medical": {
+                    "0311 Pain": {
+                        "valor": null
+                    },
+                    "0312 Dream Sleep": {
+                        "valor": null
+                    },
+                    "0313 Rehab": {
+                        "valor": null
+                    },
+                    "0314 Monitor UCI": {
+                        "valor": null
+                    },
+                    "0315 Stroke": {
+                        "valor": null
+                    },
+                    "0316 Depression": {
+                        "valor": null
+                    },
+                    "0317 Neurosurgery": {
+                        "valor": null
+                    }
+                },
+                "032 Art": {
+                    "valor": null
+                },
+                "033 Education": {
+                    "valor": null
+                },
+                "034 Sport": {
+                    "valor": null
+                },
+                "035 Military": {
+                    "valor": null
+                },
+                "036 Enhancement": {
+                    "valor": null
+                }
+            },
+            "04 Future": {
+                "valor": null
+            },
+            "05 Ethics": {
+                "valor": null
+            },
+            "06 Affective Computing": {
+                "valor": null
+            },
+            "07 Medical Imaging": {
+                "CT": {
+                    "valor": null
+                },
+                "MRI": {
+                    "valor": null
+                },
+                "PET": {
+                    "valor": null
+                }
+            },
+            "08 Reviews NT": {
+                "valor": null
+            },
+            "BCI-Pro/EEE-June2015": {
+                "valor": null
+            },
+            "GastricStimulation": {
+                "valor": null
+            },
+            "unsorted (5)": {
+                "valor": null
+            }
+        },
+        "06.StatsMath": {
+            "Math Methods": {
+                "Complex Analysis": {
+                    "valor": null
+                },
+                "DAE": {
+                    "valor": null
+                },
+                "Math": {
+                    "valor": null
+                },
+                "Matrix Factorization": {
+                    "valor": null
+                },
+                "Matrix Methods": {
+                    "valor": null
+                },
+                "Nonlinear": {
+                    "valor": null
+                },
+                "Numerical": {
+                    "valor": null
+                },
+                "Optimization": {
+                    "Boyd": {
+                        "valor": null
+                    }
+                },
+                "Wavelete": {
+                    "valor": null
+                },
+                "identifiability": {
+                    "valor": null
+                }
+            },
+            "Programming": {
+                "Psychophsyiology": {
+                    "valor": null
+                },
+                "Python": {
+                    "valor": null
+                },
+                "R": {
+                    "valor": null
+                },
+                "literate programming": {
+                    "valor": null
+                }
+            },
+            "Stats": {
+                "Ale": {
+                    "valor": null
+                },
+                "BMA": {
+                    "valor": null
+                },
+                "Bayes": {
+                    "valor": null
+                },
+                "BrainStats": {
+                    "valor": null
+                },
+                "Buhlmann": {
+                    "valor": null
+                },
+                "CCA": {
+                    "valor": null
+                },
+                "COBIDAS": {
+                    "valor": null
+                },
+                "Circulant": {
+                    "valor": null
+                },
+                "Cluster": {
+                    "valor": null
+                },
+                "Complex": {
+                    "valor": null
+                },
+                "CoordDescent": {
+                    "valor": null
+                },
+                "Covariance matrix": {
+                    "valor": null
+                },
+                "Dimension Reduction": {
+                    "valor": null
+                },
+                "Dof": {
+                    "valor": null
+                },
+                "EEG (3)": {
+                    "valor": null
+                },
+                "EM": {
+                    "valor": null
+                },
+                "EMD": {
+                    "valor": null
+                },
+                "Eilers": {
+                    "valor": null
+                },
+                "Experimental Design": {
+                    "valor": null
+                },
+                "FDA": {
+                    "valor": null
+                },
+                "FDR": {
+                    "valor": null
+                },
+                "HighDimensionalMultivariates": {
+                    "valor": null
+                },
+                "IRT": {
+                    "valor": null
+                },
+                "Individual Differences Test": {
+                    "valor": null
+                },
+                "Integral Equations": {
+                    "valor": null
+                },
+                "MVPA": {
+                    "valor": null
+                },
+                "Machine Learning": {
+                    "valor": null
+                },
+                "Manifold": {
+                    "valor": null
+                },
+                "Multitask": {
+                    "valor": null
+                },
+                "Neurimaging": {
+                    "valor": null
+                },
+                "NonlinHIghdim": {
+                    "valor": null
+                },
+                "PCA and ICA": {
+                    "procustes": {
+                        "valor": null
+                    }
+                },
+                "Penalization": {
+                    "l1+l2": {
+                        "valor": null
+                    }
+                },
+                "ROC": {
+                    "valor": null
+                },
+                "RandomMatrixTheory": {
+                    "valor": null
+                },
+                "Regresion": {
+                    "valor": null
+                },
+                "Resampling": {
+                    "valor": null
+                },
+                "Robust": {
+                    "valor": null
+                },
+                "Sample Size": {
+                    "valor": null
+                },
+                "Spatial": {
+                    "valor": null
+                },
+                "Spectral Estimation": {
+                    "valor": null
+                },
+                "Tensor regresion": {
+                    "Compression": {
+                        "valor": null
+                    },
+                    "Coupled Tensor Fact": {
+                        "valor": null
+                    },
+                    "EEG App": {
+                        "valor": null
+                    },
+                    "General/Review": {
+                        "valor": null
+                    },
+                    "Kilmer": {
+                        "valor": null
+                    },
+                    "Medical": {
+                        "valor": null
+                    },
+                    "NMF": {
+                        "valor": null
+                    },
+                    "NTF": {
+                        "Regularized": {
+                            "valor": null
+                        }
+                    },
+                    "PARAFAC": {
+                        "valor": null
+                    },
+                    "Recent": {
+                        "valor": null
+                    },
+                    "Tensor": {
+                        "valor": null
+                    },
+                    "Tensor CCA": {
+                        "valor": null
+                    },
+                    "fMRI App": {
+                        "valor": null
+                    }
+                }
+            },
+            "Stochastic Processes": {
+                "Numerical Methods": {
+                    "LL": {
+                        "valor": null
+                    }
+                },
+                "Stochastics": {
+                    "valor": null
+                },
+                "Theory": {
+                    "valor": null
+                },
+                "Unser": {
+                    "valor": null
+                }
+            },
+            "System Theory": {
+                "General": {
+                    "valor": null
+                },
+                "Hinfinity": {
+                    "valor": null
+                },
+                "Linear System Theory": {
+                    "valor": null
+                },
+                "Nonlinear System Theory": {
+                    "valor": null
+                },
+                "Pintelon": {
+                    "valor": null
+                },
+                "Spectral Factorization": {
+                    "valor": null
+                },
+                "nonparametric transfer function": {
+                    "valor": null
+                }
+            },
+            "Time Series": {
+                "AR": {
+                    "valor": null
+                },
+                "ARMA": {
+                    "valor": null
+                },
+                "Bilinear": {
+                    "valor": null
+                },
+                "CAR": {
+                    "valor": null
+                },
+                "CARMA": {
+                    "valor": null
+                },
+                "GARCH": {
+                    "valor": null
+                },
+                "GARCH TF": {
+                    "valor": null
+                },
+                "Kalman": {
+                    "valor": null
+                },
+                "MA": {
+                    "valor": null
+                },
+                "NAR": {
+                    "valor": null
+                },
+                "Robust AR": {
+                    "valor": null
+                },
+                "Signal Processing_TimeSeries": {
+                    "valor": null
+                },
+                "Time Frecuency": {
+                    "valor": null
+                },
+                "Toeplitz": {
+                    "valor": null
+                }
+            },
+            "unsorted (4)": {
+                "valor": null
+            }
+        },
+        "07.Science Policy": {
+            "Ciencia en Cuba": {
+                "Biomedicina": {
+                    "valor": null
+                },
+                "China": {
+                    "valor": null
+                },
+                "Ciencia Economía": {
+                    "valor": null
+                },
+                "FugaCerebros": {
+                    "valor": null
+                },
+                "Infometria": {
+                    "valor": null
+                },
+                "Informe UNESCO 2010": {
+                    "valor": null
+                },
+                "Lineamientos": {
+                    "valor": null
+                },
+                "ONEI": {
+                    "valor": null
+                },
+                "Posgrado": {
+                    "valor": null
+                },
+                "RDManagment": {
+                    "Compensation": {
+                        "valor": null
+                    },
+                    "Knowledge Managment": {
+                        "valor": null
+                    },
+                    "Negotation": {
+                        "valor": null
+                    },
+                    "Sharepoint": {
+                        "valor": null
+                    },
+                    "Strategic Planning": {
+                        "valor": null
+                    },
+                    "Workflows": {
+                        "valor": null
+                    },
+                    "e-science": {
+                        "valor": null
+                    }
+                }
+            },
+            "General Science": {
+                "valor": null
+            },
+            "Historia": {
+                "valor": null
+            },
+            "Medicina Tradicional China": {
+                "valor": null
+            },
+            "Miscelanea": {
+                "valor": null
+            },
+            "Policy": {
+                "valor": null
+            },
+            "Prensa": {
+                "valor": null
+            },
+            "Science Communication": {
+                "valor": null
+            },
+            "highimpact": {
+                "valor": null
+            },
+            "unsorted (3)": {
+                "valor": null
+            }
+        },
+        "08.Book_Library": {
+            "unsorted (2)": {
+                "valor": null
+            }
+        },
+        "09.CNEURO": {
+            "CV PETER": {
+                "1 book chapter": {
+                    "valor": null
+                },
+                "2 Peer Reviewed Paper": {
+                    "valor": null
+                },
+                "3 scientific meeting proceedings": {
+                    "valor": null
+                },
+                "4 Report": {
+                    "valor": null
+                },
+                "5 patents": {
+                    "valor": null
+                }
+            },
+            "unsorted (1)": {
+                "valor": null
+            }
+        },
+        "10.Brain Connectivity": {
+            "Anatomical connectivity": {
+                "valor": null
+            },
+            "BBnetwork": {
+                "valor": null
+            },
+            "Brainnettome (1)": {
+                "valor": null
+            },
+            "Causal Theory": {
+                "valor": null
+            },
+            "Connectivity": {
+                "valor": null
+            },
+            "Connectivity?": {
+                "valor": null
+            },
+            "Connectomes": {
+                "valor": null
+            },
+            "Continous Time": {
+                "valor": null
+            },
+            "Current Opinion in Neurobiology": {
+                "valor": null
+            },
+            "DTI & Connectividad": {
+                "toolbox": {
+                    "valor": null
+                }
+            },
+            "ECoG (1)": {
+                "valor": null
+            },
+            "EEG fMRI": {
+                "valor": null
+            },
+            "EEG&EEG/fMRI": {
+                "valor": null
+            },
+            "Effective Connectivity": {
+                "Continuous Time WAGS": {
+                    "valor": null
+                },
+                "DiffEq": {
+                    "valor": null
+                },
+                "Discrete Time WAGS": {
+                    "valor": null
+                },
+                "GRALCausality": {
+                    "valor": null
+                },
+                "GrangerEEG": {
+                    "valor": null
+                },
+                "GrangerfMRI": {
+                    "valor": null
+                },
+                "Graphical Models": {
+                    "valor": null
+                },
+                "Hilbert_AR": {
+                    "valor": null
+                },
+                "Methodol Advances": {
+                    "valor": null
+                },
+                "Misc": {
+                    "valor": null
+                },
+                "Mutual information": {
+                    "valor": null
+                },
+                "Physics_Engineering": {
+                    "valor": null
+                },
+                "Reviews (1)": {
+                    "valor": null
+                },
+                "Seth": {
+                    "valor": null
+                },
+                "Structural": {
+                    "valor": null
+                },
+                "Theroetical Causality": {
+                    "valor": null
+                },
+                "Topographic": {
+                    "valor": null
+                },
+                "fMRI (2)": {
+                    "valor": null
+                },
+                "por clasificar": {
+                    "valor": null
+                }
+            },
+            "Fa Hsuan": {
+                "valor": null
+            },
+            "Fingerprint": {
+                "valor": null
+            },
+            "Granger": {
+                "valor": null
+            },
+            "Grupo ICA": {
+                "valor": null
+            },
+            "Influence": {
+                "valor": null
+            },
+            "Morphological connectivity": {
+                "valor": null
+            },
+            "Multi subject networks": {
+                "valor": null
+            },
+            "Reviews": {
+                "valor": null
+            },
+            "Ryali": {
+                "valor": null
+            },
+            "Spatio-temporal": {
+                "valor": null
+            },
+            "State Space": {
+                "valor": null
+            },
+            "Steve": {
+                "valor": null
+            },
+            "Time Series (2)": {
+                "valor": null
+            },
+            "Validity": {
+                "valor": null
+            },
+            "fMRI (1)": {
+                "valor": null
+            },
+            "fMRI (4)": {
+                "valor": null
+            },
+            "nonlinCONN": {
+                "valor": null
+            },
+            "prediction networks": {
+                "valor": null
+            },
+            "realBrainConnectivity": {
+                "valor": null
+            },
+            "statsCausality": {
+                "valor": null
+            },
+            "structure/function": {
+                "valor": null
+            },
+            "unsorted": {
+                "valor": null
+            }
+        },
+        "99.Personal Stuff": {
+            "Dogs": {
+                "valor": null
+            }
+        },
+        "9999999999999temp": {
+            "00000": {
+                "valor": null
+            },
+            "Aanatom-funct conn": {
+                "valor": null
+            },
+            "Amir Shmuel shared work": {
+                "valor": null
+            },
+            "Backgroundcon": {
+                "valor": null
+            },
+            "Clinical neurophysiology special issue2017": {
+                "valor": null
+            },
+            "DREADDS": {
+                "valor": null
+            },
+            "Effects of Physical and cognitive on Brain structure and function": {
+                "valor": null
+            },
+            "From Lancet": {
+                "valor": null
+            },
+            "Heartbrainnetworkspecialissue": {
+                "valor": null
+            },
+            "Hot papers": {
+                "valor": null
+            },
+            "Literatrua": {
+                "valor": null
+            },
+            "Nature human behaviour march17issu": {
+                "valor": null
+            },
+            "Nature neuroscience fous on human brain mapping": {
+                "valor": null
+            },
+            "Nature special issue Mental Health": {
+                "valor": null
+            },
+            "NeuroImage special": {
+                "valor": null
+            },
+            "Neuroimage-data share": {
+                "valor": null
+            },
+            "Neurovascular coupling": {
+                "valor": null
+            },
+            "New Articles": {
+                "valor": null
+            },
+            "Regularspectrum": {
+                "valor": null
+            },
+            "Special Issue on Neural Network Learning in Big Data": {
+                "valor": null
+            },
+            "Today Neuroimaging special issue": {
+                "valor": null
+            },
+            "Visualization": {
+                "valor": null
+            },
+            "Wearable": {
+                "valor": null
+            },
+            "eegcov": {
+                "valor": null
+            },
+            "fmriconn": {
+                "valor": null
+            },
+            "invCOv": {
+                "valor": null
+            },
+            "paper to curate": {
+                "valor": null
+            },
+            "zeroref": {
+                "valor": null
+            }
+        },
+        "Archive": {
+            "ChinaBelgiumProject": {
+                "BrainBodyNetworks": {
+                    "Aging": {
+                        "valor": null
+                    },
+                    "BodyAreaNetwork": {
+                        "valor": null
+                    },
+                    "ComputationalMethods": {
+                        "valor": null
+                    },
+                    "HeartBrain": {
+                        "valor": null
+                    },
+                    "Mental-Emotion": {
+                        "valor": null
+                    },
+                    "Neurofeedback": {
+                        "valor": null
+                    },
+                    "ToClassify": {
+                        "valor": null
+                    },
+                    "applicationform": {
+                        "valor": null
+                    }
+                },
+                "DepressionAffectiveComputing": {
+                    "valor": null
+                },
+                "WAGS": {
+                    "valor": null
+                }
+            },
+            "Fa-Hsuan": {
+                "BCG": {
+                    "valor": null
+                }
+            },
+            "INCFgrant": {
+                "valor": null
+            },
+            "Keith & Pedro": {
+                "Shared papers": {
+                    "Ultrafast MRI": {
+                        "valor": null
+                    }
+                }
+            },
+            "Neuroimaging and Neuroinfirmatics course": {
+                "Book Club": {
+                    "valor": null
+                },
+                "Chapter 1": {
+                    "Additional": {
+                        "valor": null
+                    },
+                    "Recommended": {
+                        "valor": null
+                    }
+                },
+                "Chapter 2": {
+                    "Additional (1)": {
+                        "valor": null
+                    },
+                    "Recommended (1)": {
+                        "valor": null
+                    }
+                },
+                "Chapter 3": {
+                    "Additional (2)": {
+                        "valor": null
+                    },
+                    "Recomended (2)": {
+                        "valor": null
+                    }
+                }
+            },
+            "Neuroinformatica": {
+                "Data Management": {
+                    "valor": null
+                },
+                "Neurotec": {
+                    "BCI": {
+                        "valor": null
+                    },
+                    "Neuroengineering": {
+                        "valor": null
+                    },
+                    "Pain": {
+                        "valor": null
+                    },
+                    "Rehabilitation": {
+                        "valor": null
+                    }
+                },
+                "Neurotechnology": {
+                    "valor": null
+                }
+            },
+            "ProcIEEETensors": {
+                "1.Introduction": {
+                    "valor": null
+                },
+                "2. Tensor Diagrame and Operations": {
+                    "valor": null
+                },
+                "3. Matrix Based EEG/fMRI analysis": {
+                    "valor": null
+                },
+                "4. Tensor EEG analysis": {
+                    "valor": null
+                },
+                "5.Brain Connectivity as a Tensor regression": {
+                    "valor": null
+                },
+                "6.Tensor EEG/fMRI fusion": {
+                    "valor": null
+                },
+                "7.Algorithms and Software for Tensor based problem": {
+                    "valor": null
+                },
+                "Figure Legends": {
+                    "valor": null
+                },
+                "Maybe": {
+                    "valor": null
+                },
+                "NEW": {
+                    "valor": null
+                },
+                "POSSIBLE": {
+                    "valor": null
+                }
+            },
+            "Sternberg": {
+                "Methods": {
+                    "valor": null
+                }
+            }
+        },
+        "BCW2017": {
+            "valor": null
+        },
+        "Basar": {
+            "valor": null
+        },
+        "CHBMP": {
+            "valor": null
+        },
+        "COVID": {
+            "Air traffic": {
+                "valor": null
+            },
+            "Complex Heath interventions": {
+                "valor": null
+            },
+            "animal models": {
+                "valor": null
+            }
+        },
+        "Cardiac Amyloidosis": {
+            "valor": null
+        },
+        "Deep Learning": {
+            "valor": null
+        },
+        "HIgh Accuracy Classification": {
+            "valor": null
+        },
+        "Maria papers": {
+            "FA reaction time": {
+                "valor": null
+            },
+            "Marjan": {
+                "valor": null
+            },
+            "New Folder": {
+                "valor": null
+            }
+        },
+        "Mitchell Stuff": {
+            "Layer fMRI": {
+                "valor": null
+            },
+            "Retinotopy": {
+                "valor": null
+            },
+            "computational Cog N": {
+                "valor": null
+            },
+            "pRF-cRF": {
+                "valor": null
+            },
+            "tensor": {
+                "valor": null
+            },
+            "tensor (1)": {
+                "valor": null
+            }
+        },
+        "Multi-omics": {
+            "valor": null
+        },
+        "Papers published at the lab": {
+            "Published in 2016": {
+                "valor": null
+            },
+            "published in 2015": {
+                "valor": null
+            }
+        },
+        "Pedro co-author": {
+            "valor": null
+        },
+        "ProcIEEE2015": {
+            "valor": null
+        },
+        "TWAS Yao": {
+            "valor": null
+        },
+        "ZZZZZZZZZZZZZZZZZZZZZ": {
+            "Algorithms": {
+                "valor": null
+            },
+            "Alzheimer's Disease": {
+                "valor": null
+            },
+            "BCI": {
+                "valor": null
+            },
+            "CCA": {
+                "valor": null
+            },
+            "Causal Kernels": {
+                "valor": null
+            },
+            "Connectivity": {
+                "valor": null
+            },
+            "Covariance": {
+                "valor": null
+            },
+            "Criticality": {
+                "valor": null
+            },
+            "CrossFreqeuncy": {
+                "valor": null
+            },
+            "DeepLearnng": {
+                "valor": null
+            },
+            "DiffusionMaps": {
+                "valor": null
+            },
+            "ECoG": {
+                "valor": null
+            },
+            "EEG Reference": {
+                "valor": null
+            },
+            "Empresa Software": {
+                "valor": null
+            },
+            "Envelope": {
+                "valor": null
+            },
+            "Epigenetics": {
+                "valor": null
+            },
+            "FokketPlsnvk": {
+                "valor": null
+            },
+            "Fourier Continuation": {
+                "valor": null
+            },
+            "Free Energy": {
+                "valor": null
+            },
+            "Imputation": {
+                "valor": null
+            },
+            "Leakage": {
+                "valor": null
+            },
+            "MEG networks": {
+                "valor": null
+            },
+            "Mediation": {
+                "valor": null
+            },
+            "Missing": {
+                "valor": null
+            },
+            "Missing Data": {
+                "valor": null
+            },
+            "Myocarditis": {
+                "valor": null
+            },
+            "Neural Mass": {
+                "valor": null
+            },
+            "New Kalman": {
+                "valor": null
+            },
+            "Nonlinear": {
+                "valor": null
+            },
+            "OPMEG": {
+                "valor": null
+            },
+            "Reviews": {
+                "valor": null
+            },
+            "Riemann&Wasserstein": {
+                "valor": null
+            },
+            "SMOTE": {
+                "valor": null
+            },
+            "Strategy": {
+                "valor": null
+            },
+            "Zero-Inflated": {
+                "valor": null
+            },
+            "alpha": {
+                "valor": null
+            },
+            "application": {
+                "valor": null
+            },
+            "bio&NeuroInfromatics": {
+                "valor": null
+            },
+            "diffusion image": {
+                "valor": null
+            },
+            "else": {
+                "valor": null
+            },
+            "gene": {
+                "valor": null
+            },
+            "inverse problem": {
+                "valor": null
+            },
+            "laminar": {
+                "valor": null
+            },
+            "parcellation": {
+                "valor": null
+            },
+            "time variant connectivity": {
+                "valor": null
+            }
+        },
+        "Zotero - spectral factorizaton": {
+            "valor": null
+        },
+        "qEEGtCBRAIN": {
+            "valor": null
+        }
+    }
+}

@@ -5,11 +5,41 @@
 {% endblock %}
 {% block content%}
     <h1>Documents</h1>
-<ul>
+
+<style>
+    #listaDoc li{
+        list-style: none;
+        height: 75px;
+        width: 80%;
+        background-color: rgba(120, 107, 240, 0.151);
+        border-left: 5px solid rgba(120, 107, 240, 0.562);
+        margin: 15px;
+        text-indent: 2%;
+        
+    }
+
+    .cat_tree_container li{
+        list-style: none;
+    }
+
+    .cat_tree_container ul:first-child{
+        font-size: 20px;
+        font-style: bold;
+        
+    }
+
+
+
+
+</style>
+<div class="row">
+    <div class="col-8">
+<ul id="listaDoc">
     {% for doc in object_list %}
         <li>
-            <a href="{% url 'article-detail' doc.pk %}">{{doc.title}}</a>
+            <a href="{% url 'article-detail' doc.pk %}">{{doc.title|truncatechars:100}}</a>
             {{doc.tags}}
+            <br />
             {% if user.is_authenticated %}
             <small><a href="{% url 'update_doc' doc.pk %}">(Edit)</a>
             </small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
@@ -19,4 +49,13 @@
 
     {% endfor %}
 </ul>
+    </div>
+    <div class="col-4 cat_tree_container">
+        <ul>
+        {% for cat in cat_list %}
+            <li>{{cat}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

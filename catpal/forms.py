@@ -26,3 +26,7 @@ class EditDocumentForm(forms.ModelForm):
             'categories': forms.CheckboxSelectMultiple(attrs={'class': 'form-checkform-check'}),
             #'doc_id': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+class JsonBulkAddForm(forms.ModelForm):
+    jsonField = forms.Textarea(attrs={'class': 'form-control'})
+
