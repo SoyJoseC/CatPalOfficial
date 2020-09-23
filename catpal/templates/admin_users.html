@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Administrar Usuarios</title>
+{% endblock %}
+
+
+{% block content %}
+
+<!--this is because the h1 hides behind the navbar-->
+<br><br><br>
+<h1>Usuarios</h1>
+
+{%  for error in errors %}
+    <div>
+        {{ error }}
+    </div>
+{% endfor %}
+
+
+
+{%  for user in users %}
+    <div class="element">
+            <div>
+                 <a href="{% url 'admin_user_details' user_id=user.pk %}">
+                     <label>{{user.username}}</label>
+                    >>
+                    <label>{{user.first_name}}</label>
+                    <label>{{user.last_name}}</label>
+                 </a>
+
+            </div>
+        </a>
+    </div>
+{% endfor %}
+
+<button>Añadir Usuario</button>
+
+
+
+{% endblock %}

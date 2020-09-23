@@ -3,7 +3,5 @@
   "CLIENT_SECRET" : "QTAf8AbMyQKUPENB",
   "CLIENT_NAME" : "Kb.Mendeley.Test",
   "REDIRECT_URI" : "http://localhost:5000/oauth",
-  "USER_EMAIL" : "edfer2025@gmail.com",
-  "USER_PASSWORD" : "mende2025",
   "UNCLASIFIED_FOLDER" : "UNCLASIFIED"
 }

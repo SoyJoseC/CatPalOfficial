@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Agregar Grupos</title>
+{% endblock %}
+
+
+{% block content %}
+
+<!--this is because the h1 hides behind the navbar-->
+<br><br><br>
+
+
+
+<h1>Agregar Grupos</h1>
+
+{% if errors %}
+    <h2 class="error_message"> Error </h2>
+    {%  for error in errors %}
+        <div class="error_message">
+            {{ error }}
+        </div>
+    {% endfor %}
+    <br>
+{% endif%}
+
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_id" value="user_data">
+    <label>Usuario de mendeley asociado al grupo</label>
+    <input type="text" name="mendeley_user"/>
+    <label>Contraseña</label>
+    <input type="text" name="mendeley_password"/>
+
+    <input type="submit" value="Escanear Grupos">
+</form>
+
+{% if groups %}
+    <form method="post">
+        {% csrf_token %}
+
+    <input type="hidden" name="form_id" value="groups_data">
+    <input type="hidden" name="mendeley_user" value="{{mendeley_user}}"/>
+    <input type="hidden" name="mendeley_password" value="{{mendeley_password}}"/>
+
+    {% for group in groups %}
+
+        <div class="div_group">
+            <h3>
+                <input type="checkbox" name="{{group.id}}" value="{{group.name}}">
+
+                {{group.name}}</h3>
+            <div>
+
+
+                <span>Acceso:</span>
+                {% if group.access_level == "private"%}
+
+                {% elif group.access_level == "invite_only" %}
+
+                {% elif group.access_level == "public" %}
+
+                {% endif %}
+                {{group.access_level}}
+                <br>
+                <span>Id:</span>
+                {{group.id}}
+                <br>
+                <a href="{{group.link}}">{{group.link}}</a>
+                <br>
+                <span>Rol:</span>
+                {{group.role}}
+                <br>
+                <span>Tags:</span>
+                {{group.tags}}
+
+            </div>
+        </div>
+
+    {% endfor %}
+        <input type="submit" value="Añadir Grupos">
+    </form>
+{% endif %}
+
+<br>
+
+{% endblock %}

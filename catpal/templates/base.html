@@ -16,104 +16,118 @@
 
 
     {% block title %}<title>Hello, world!</title>{% endblock %}
+
   </head>
   <body>
     <style>
-.nav1{
-    height: 30%;
-    overflow:scroll;
-}
-.cat_container{
-    height: 30%;
-    overflow:scroll;
-}
-#aceptar{
-    margin: 2px;
-    float: right;
-}
+      .nav1{
+          height: 30%;
+          overflow:scroll;
+      }
 
-.categories{
+      .nav_bar_button{
+          border-style: dashed;
+          border-color: green;
+      }
 
-    padding-right: 4px;
-    margin: 10px;
-    float: left;
-}
+      .nav_bar_button_admin{
+          border-style: dashed;
+          border-color: red;
+      }
+      .error_message{
+          color: red;
+      }
+      .div_group{
+          border-style: solid;
+          border-width: 1px;
+          border-color: black;
+          border-radius:25px;
+          padding:15px;
+          margin:10px;
+      }
+      .cat_container{
+          height: 30%;
+          overflow:scroll;
+      }
+      #aceptar{
+          margin: 2px;
+          float: right;
+      }
 
-.categories:hover{
-    background-color: rgba(182, 182, 182, 0.829);
-}
+      .categories{
 
-.element{
-    height: 50px;
-    margin: 2px;
-    background-color: rgba(182, 182, 182, 0.425);
+          padding-right: 4px;
+          margin: 10px;
+          float: left;
+      }
 
-}
+      .categories:hover{
+          background-color: rgba(182, 182, 182, 0.829);
+      }
 
-.element:hover{
-    background-color: rgba(182, 182, 182, 0.829);
+      .element{
+          height: 50px;
+          margin: 2px;
+          background-color: rgba(182, 182, 182, 0.425);
 
-}
+      }
 
+      .element:hover{
+          background-color: rgba(182, 182, 182, 0.829);
 
-</style>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'home' %}">CatPal</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      }
+  </style>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+      <a class="navbar-brand" href="{% url 'home' %}">CatPal</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
 
       {% if user.is_authenticated %}
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'add_post' %}">Add Document <span class="sr-only">(current)</span></a>
-      </li>
+        <li class="nav-item active nav_bar_button">
+          <a class="nav-link" href="{% url 'add_post' %}">Nuevo Documento <span class="sr-only">(current)</span></a>
+        </li>
+          <li class="nav-item active nav_bar_button">
+          <a class="nav-link" href="{% url 'groups' %}"> Grupos del Usuario</a>
+        </li>
+          <li class="nav-item active nav_bar_button">
+          <a class="nav-link" href="{% url 'logout' %}">Salir: {{ user.username }}</a>
+        </li>
 
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-      </li>
+          {% if user.is_staff %}
+          <li class="nav-item active nav_bar_button_admin">
+          <a class="nav-link" href="/admin/">Menu de Admin the Django</a>
+        </li>
+          <li class="nav-item active nav_bar_button_admin">
+          <a class="nav-link" href="{% url 'admin_groups' %}">Administrar Grupos</a>
+        </li>
+          <li class="nav-item active nav_bar_button_admin">
+          <a class="nav-link" href="{% url 'admin_users' %}">Administrar Usuarios</a>
+        </li>
+          <li class="nav-item active nav_bar_button_admin">
+          <a class="nav-link" href="{% url 'admin_add_group' %}">Crear Grupos</a>
+        </li>
+          {% endif %}
       {% else %}
 
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      <li class="nav-item active nav_bar_button">
+        <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      <li class="nav-item active nav_bar_button">
+        <a class="nav-link" href="{% url 'login' %}">Autenticarse</a>
       </li>
-
-
-
       {% endif %}
 
-
-
-
-
-      <!--
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-      -->
     </ul>
 
-  </div>
-</nav>
+      </div>
+    </nav>
 <div class="container">
 {% block content %}
 

@@ -10,7 +10,7 @@ import requests
 # App Information
 client_id = "8132"
 client_secret = "QTAf8AbMyQKUPENB"
-client_name = "Kb.Mendeley.Test"
+client_name = "Kb.Mendeley2.Test"
 redirect_uri = "http://localhost:5000/oauth"
 
 # User Information
@@ -38,10 +38,10 @@ group_data = {'name': 'TestMende',
               'id': '41b5c68e-eaff-3fc0-adf6-74444146428f'}
 
 # folder to synchronize with a nextcloud folder
-# mendeley_folder = '/var/www/nextcloud/SMB/Mendeley'
+# mendeley_folder = '/var/www/nextcloud/SMB/Mendeley2'
 # temp_folder = '/var/www/nextcloud/SMB/MM'
-mendeley_folder = 'C:/Users/EduardoFeria/Jupyter proyects/Mendeley/Simple/MendeleyFolder'
-temp_folder = 'C:/Users/EduardoFeria/Jupyter proyects/Mendeley/Simple/TempFolder'
+mendeley_folder = 'C:/Users/EduardoFeria/Jupyter proyects/Mendeley2/Simple/MendeleyFolder'
+temp_folder = 'C:/Users/EduardoFeria/Jupyter proyects/Mendeley2/Simple/TempFolder'
 
 # Generated URL Information
 dominio = 'https://cloud.cneuro.cu'
@@ -58,7 +58,7 @@ def authenticate():
 
     auth = mendeley.start_implicit_grant_flow()
 
-    # The user needs to visit this URL, and log in to Mendeley.
+    # The user needs to visit this URL, and log in to Mendeley2.
     login_url = auth.get_login_url()
 
     import requests
@@ -111,7 +111,7 @@ def get_docs_from_group_api(group_id, access_token):
 def add_doc_website(doc, website):
     """
     Adds a new Website to a Document.
-    :param doc: Mendeley Document
+    :param doc: Mendeley2 Document
     :param website: url where the document can be found
     :return:
     """
@@ -211,7 +211,7 @@ def update_metadata(doc):
                         pass
 
                     # modifying source
-                    # In Mendeley source => Journal
+                    # In Mendeley2 source => Journal
                     if doc.source is None and cat.source is not None:
                         doc.source = cat.source
                         pass
@@ -274,7 +274,7 @@ def download_document(doc, dir):
 
 def get_groups():
     """
-    Retrieves the groups in Mendeley.
+    Retrieves the groups in Mendeley2.
     :return:
     """
     return list(session.groups.iter())
@@ -491,7 +491,7 @@ def synchronize_mendeley():
                 new_file_name = new_file_name[0:250 - len(mendeley_folder) - len(extension)]
             new_file_name = new_file_name + extension
         else:
-            logger.log_warning("Could not find a source file for the document %s in Mendeley's Database." % doc.title)
+            logger.log_warning("Could not find a source file for the document %s in Mendeley2's Database." % doc.title)
             continue
 
         if new_file_name not in os.listdir(mendeley_folder):

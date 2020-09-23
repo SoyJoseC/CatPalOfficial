@@ -1,7 +1,6 @@
-from catpal.Mendeley import mendeley_driver as md
 import pandas as pd
 import numpy as np
-from catpal.Mendeley import utils
+from catpal.Mendeley import utils, mendeley_driver as md
 import json
 
 to_clasify_sumary = 'to_clasify'

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Select Group</title>
+{% endblock %}
+
+
+{% block content %}
+
+<!--this is because the h1 hides behind the navbar-->
+<br><br><br>
+<h1>Groups user</h1>
+
+{%  for error in errors %}
+    <div>
+        {{ error }}
+    </div>
+{% endfor %}
+
+
+
+{% for group in groups %}
+
+        <div class="div_group">
+            <h3>
+                <a href="{% url 'admin_group_details' group_id=group.mendeley_id %}">{{group.name}}</a>
+            </h3>
+            <div>
+
+                <span>Acceso:</span>
+                {% if group.access_level == "private"%}
+
+                {% elif group.access_level == "invite_only" %}
+
+                {% elif group.access_level == "public" %}
+
+                {% endif %}
+                {{group.access_level}}
+                <br>
+                <span>Id:</span>
+                {{group.id}}
+                <br>
+                <a href="{{group.link}}">{{group.link}}</a>
+                <br>
+                <span>Tags:</span>
+                {{group.tags}}
+
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+
+{% endblock %}

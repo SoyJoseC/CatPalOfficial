@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Detalles de Usuario</title>
+{% endblock %}
+
+
+{% block content %}
+
+<!--this is because the h1 hides behind the navbar-->
+<br><br><br>
+
+{%  for error in errors %}
+    <div>
+        {{ error }}
+    </div>
+{% endfor %}
+
+<h1>{{ user.username }}</h1>
+
+<p> Nombre: {{ user.first_name }}</p>
+<p> Apellidos: {{ user.last_name }}</p>
+
+
+<button> Guardar cambios</button>
+
+{% endblock %}

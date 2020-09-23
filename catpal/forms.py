@@ -27,6 +27,12 @@ class EditDocumentForm(forms.ModelForm):
             #'doc_id': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
+class SelectGroupForm(forms.Form):
+    groups = ['uno', 'dos']
+    widgets = {
+        'groups': forms.CheckboxSelectMultiple(attrs={'class': 'form-checkform-check'}),
+    }
+
 class JsonBulkAddForm(forms.ModelForm):
     jsonField = forms.Textarea(attrs={'class': 'form-control'})
 

@@ -1,15 +1,14 @@
 #!/usr/bin/python
 from mendeley import Mendeley
 import pandas as pd
-import numpy as np
-from catpal.Mendeley import logger
+from catpal.Mendeley import logger, utils
 import os
 import json
 import requests
-from catpal.Mendeley import utils
 
 config = None
-with open("C:/Users/Jomz/PycharmProjects/catpalsite/catpal/Mendeley/config.json", 'r') as fh:
+# print(os.getcwd())
+with open("./catpal/Mendeley/config.json", 'r') as fh:
     config = json.loads(fh.read())
 
 
@@ -19,9 +18,6 @@ CLIENT_SECRET = config["CLIENT_SECRET"]
 CLIENT_NAME = config["CLIENT_NAME"]
 REDIRECT_URI = "http://localhost:5000/oauth"
 
-# User Information
-USER_EMAIL = config["USER_EMAIL"]
-USER_PASSWORD = config["USER_PASSWORD"]
 ACCESS_TOKEN = None
 
 # Group Information
@@ -32,11 +28,11 @@ print(group.__dict__)
 """
 
 
-group_data = {
+"""group_data = {
     'id': '316cff15-905a-3b4a-99e1-76e085570e8a',
     'name': 'COVID-19',
     'description': 'Papers related to the fight against COVID'
-}
+}"""
 
 """
 group_data = {'name': 'TestMende',
@@ -44,10 +40,10 @@ group_data = {'name': 'TestMende',
               'id': '41b5c68e-eaff-3fc0-adf6-74444146428f'}
 """
 # folder to synchronize with a nextcloud folder
-# mendeley_folder = '/var/www/nextcloud/SMB/Mendeley'
+# mendeley_folder = '/var/www/nextcloud/SMB/Mendeley2'
 # temp_folder = '/var/www/nextcloud/SMB/MM'
-mendeley_folder = 'C:/Users/EduardoFeria/Jupyter proyects/Mendeley/Simple/MendeleyFolder'
-temp_folder = 'C:/Users/EduardoFeria/Jupyter proyects/Mendeley/Simple/TempFolder'
+mendeley_folder = 'C:/Users/EduardoFeria/Jupyter proyects/Mendeley2/Simple/MendeleyFolder'
+temp_folder = 'C:/Users/EduardoFeria/Jupyter proyects/Mendeley2/Simple/TempFolder'
 
 # Generated URL Information
 dominio = 'https://cloud.cneuro.cu'
@@ -58,29 +54,30 @@ base_url = 'https://cloud.cneuro.cu/s/jS2gXc843y3WZ4e/download?path=%2F&files='
 session = None
 
 
-def authenticate():
-    # These values should match the ones supplied when registering your application.
-    mendeley = Mendeley(CLIENT_ID, redirect_uri=REDIRECT_URI)
+def authenticate(user_email, user_password):
+    try:
+        # These values should match the ones supplied when registering your application.
+        mendeley = Mendeley(CLIENT_ID, redirect_uri=REDIRECT_URI)
 
-    auth = mendeley.start_implicit_grant_flow()
+        auth = mendeley.start_implicit_grant_flow()
 
-    # The user needs to visit this URL, and log in to Mendeley.
-    login_url = auth.get_login_url()
+        # The user needs to visit this URL, and log in to Mendeley2.
+        login_url = auth.get_login_url()
 
-    import requests
+        import requests
 
-    res = requests.post(login_url, allow_redirects=False,
-                        data={'username': config['USER_EMAIL'], 'password': config['USER_PASSWORD']})
+        res = requests.post(login_url, allow_redirects=False,
+                            data={'username': user_email, 'password': user_password})
 
-    auth_response = res.headers['Location']
+        auth_response = res.headers['Location']
 
-    # After logging in, the user will be redirected to a URL, auth_response.
-    session = auth.authenticate(auth_response)
-    return session
-
-
-session = authenticate()
-ACCESS_TOKEN = session.token['access_token']
+        # After logging in, the user will be redirected to a URL, auth_response.
+        global session
+        session = auth.authenticate(auth_response)
+        global ACCESS_TOKEN
+        ACCESS_TOKEN = session.token['access_token']
+    except Exception as exc:
+        raise Exception("Error de autenticacion.")
 
 
 def get_documents():
@@ -139,7 +136,7 @@ def get_documents_to_clasify():
 def add_doc_website(doc, website):
     """
     Adds a new Website to a Document.
-    :param doc: Mendeley Document
+    :param doc: Mendeley2 Document
     :param website: url where the document can be found
     :return:
     """
@@ -239,7 +236,7 @@ def update_metadata(doc):
                         pass
 
                     # modifying source
-                    # In Mendeley source => Journal
+                    # In Mendeley2 source => Journal
                     if doc.source is None and cat.source is not None:
                         doc.source = cat.source
                         pass
@@ -302,17 +299,17 @@ def download_document(doc, dir):
 
 def get_groups():
     """
-    Retrieves the groups in Mendeley.
+    Retrieves the groups in Mendeley2.
     :return:
     """
     return list(session.groups.iter())
 
 
-def get_group():
+def get_group(id):
     """
-    :return: The Group COVID-19.
+    :return: The Group that has the id.
     """
-    return session.groups.get(group_data['id'])
+    return session.groups.get(id)
 
 
 def get_local_folders(access_token=ACCESS_TOKEN):
@@ -323,7 +320,7 @@ def get_local_folders(access_token=ACCESS_TOKEN):
     res = requests.get(url, headers=headers, params=params)
     folders = res.json()
     res_header = res.headers
-    mendeley_count = int(res_header['Mendeley-Count'])
+    mendeley_count = int(res_header['Mendeley2-Count'])
     while mendeley_count > len(folders):
         link = res_header['link']
         next = utils.parse_link_headers(link)['next']
@@ -559,7 +556,7 @@ def synchronize_mendeley():
                 new_file_name = new_file_name[0:250 - len(mendeley_folder) - len(extension)]
             new_file_name = new_file_name + extension
         else:
-            logger.log_warning("Could not find a source file for the document %s in Mendeley's Database." % doc.title)
+            logger.log_warning("Could not find a source file for the document %s in Mendeley2's Database." % doc.title)
             continue
 
         if new_file_name not in os.listdir(mendeley_folder):
