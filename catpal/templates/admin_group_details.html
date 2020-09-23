@@ -1,28 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'group_details.html' %}
 
 {% block title %}
-    <title>Detalles de Grupo</title>
+    <title>Detalles de Grupo (Staff)</title>
 {% endblock %}
 
 
-{% block content %}
 
-<!--this is because the h1 hides behind the navbar-->
-<br><br><br>
+{% block staff%}
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="syncfrommendeley">
+        <input type="submit" value="Sincronizar desde Mendeley">
+    </form>
 
-{%  for error in errors %}
-    <div>
-        {{ error }}
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="synctomendeley">
+        <input type="submit" value="Sincronizar hacia Mendeley">
+    </form>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="delete">
+        <input type="submit" value="TODO Eliminar">
+    </form>
+
+    <div id="Synchronized_detected_changes">
+        {% if sync_changes %}
+            <h3>Cambios encontrados </h3>
+            {% for change in sync_changes %}
+                <p>{{change.title}}</p>
+            {% endfor %}
+        {% endif%}
     </div>
-{% endfor %}
-
-<h1>{{ group.name }}</h1>
-
-<p> {{ group.mendeley_id }}</p>
-<p> {{ group.mendeley_username }}</p>
-
-<p> this is a Group </p>
-
-<button> Sincronizar</button>
 
 {% endblock %}
+
+

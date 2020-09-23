@@ -77,7 +77,7 @@ def authenticate(user_email, user_password):
         global ACCESS_TOKEN
         ACCESS_TOKEN = session.token['access_token']
     except Exception as exc:
-        raise Exception("Error de autenticacion.")
+        raise Exception("Error de autenticacion. Asegurese de que esta conectado a Internet.")
 
 
 def get_documents():
@@ -88,11 +88,11 @@ def get_documents():
     return docs
 
 
-def get_documents_of_group():
+def get_documents_of_group(group_id):
     """
     :return: Documents belonging to the group.
     """
-    docs = list(get_group().documents.iter(view='all'))
+    docs = list(get_group(group_id).documents.iter(view='all'))
     return docs
 
 

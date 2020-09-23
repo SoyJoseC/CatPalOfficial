@@ -18,12 +18,11 @@
 {% endfor %}
 
 
-
 {% for group in groups %}
 
         <div class="div_group">
             <h3>
-                <a href="{% url 'admin_group_details' group_id=group.mendeley_id %}">{{group.name}}</a>
+                <a href="{% url 'group_details' group_id=group.mendeley_id %}">{{group.name}}</a>
             </h3>
             <div>
 
@@ -49,7 +48,6 @@
         </div>
 
     {% endfor %}
-
 
 
 {% endblock %}

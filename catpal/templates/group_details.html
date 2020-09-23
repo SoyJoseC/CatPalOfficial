@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Detalles de Grupo</title>
+{% endblock %}
+
+
+{% block content %}
+
+<!--this is because the h1 hides behind the navbar-->
+<br><br><br>
+
+{%  for error in errors %}
+    <div>
+        {{ error }}
+    </div>
+{% endfor %}
+
+<h1>{{ group.name }}</h1>
+
+<p> {{ group.mendeley_id }}</p>
+<p> {{ group.mendeley_username }}</p>
+
+
+<a href="{% url 'group_documents' group_id=group.mendeley_id %}">Documentos</a>
+
+    {% block staff%}
+
+    {% endblock %}
+
+{% endblock %}

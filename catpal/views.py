@@ -118,42 +118,28 @@ def bulk_add_cats(request):
     return render(request, 'bulk_add_categories.html', {"errors": errors, "estado": estado})
 
 
-def select_group(request):
-    """
-    Shows a form with the groups of the User,
-    the User will choose one of those groups and the documents of that group will be displayed.
-    :param request:
-    :return:
-    """
-    errors = []
-
-    if request.method == 'POST':
-        # print(request.POST)
-        try:
-            group_id = request.POST['selected_group']
-            group = MendeleyGroup.objects.get(mendeley_id = group_id)
-            # redirect to the group page
-            return redirect('group_documents', group_id=group_id)
-        except MultiValueDictKeyError:
-            # redirect to a message
-            errors.append('Debe seleccionar un grupo.')
-
-    groups = MendeleyGroup.objects.all()
-    return render(request, 'select_mendeley_group.html', {'groups':groups, 'errors': errors})
+def group_details(request, group_id):
+    if request.user.is_authenticated:
+        group = MendeleyGroup.objects.get(mendeley_id=group_id)
+        return render(request, 'group_details.html', {'group': group})
+    else:
+        return HttpResponseForbidden()
 
 
 def user_groups(request):
     # get only the user groups
     groups = request.user.groups.all()
-    return render(request, 'user_mendeley_groups.html', {'groups': groups})
+    return render(request, 'user_groups.html', {'groups': groups})
 
 
 def group_documents(request, group_id):
-    print('entre')
+    context = {}
     group = MendeleyGroup.objects.get(mendeley_id=group_id)
+    context['group'] = group
     # Get the documents that belongs to the group.
     documents = group.documents.all()
-    return render(request, 'group_documents.html', {'documents': documents})
+    context['documents'] = documents
+    return render(request, 'group_documents.html', context)
 
 
 # *************************************Staff Views**********************************************
@@ -168,8 +154,62 @@ def admin_groups(request):
 
 def admin_group_details(request, group_id):
     if request.user.is_staff and request.user.is_staff:
+        context = {}
         group = MendeleyGroup.objects.get(mendeley_id=group_id)
-        return render(request, 'admin_group_details.html', {'group': group})
+        context['group'] = group
+
+        if request.method == 'GET':
+            return render(request, 'admin_group_details.html', context)
+
+        elif request.method == 'POST':
+            if request.POST['action'] == 'syncfrommendeley':
+                # Search for the documents in the group
+                md.authenticate(group.mendeley_username, group.mendeley_password)
+                mendeley_docs = md.get_documents_of_group(group_id)
+                # for now only check not to have duplicates.
+                for mendeley_doc in mendeley_docs:
+                    try:
+                        # if the document exist in the database
+                        doc = Document.objects.get(mendeley_id=mendeley_doc.id)
+                        doc.title = mendeley_doc.title
+                        doc.abstract = mendeley_doc.abstract
+                        doc.tags = ', '.join(mendeley_doc.tags)
+                        doc.save()
+                    except Document.DoesNotExist:
+                        # create the document if does not exist in the database
+                        doc = Document(
+                            mendeley_id = mendeley_doc.id,
+                            title = mendeley_doc.title,
+                            tags = ', '.join(mendeley_doc.tags),
+                            abstract = mendeley_doc.abstract,
+                        )
+                        doc.save()
+                        group.documents.add(doc)
+                        pass
+                context['sync_changes'] = mendeley_docs
+                return render(request, 'admin_group_details.html', context)
+
+            elif request.POST['action'] == 'synctomendeley':
+                md.authenticate(group.mendeley_username, group.mendeley_password)
+                mendeley_group = md.get_group(group.mendeley_id)
+                for doc in group.documents.all():
+                    # get the corresponding Mendeley document
+                    mendeley_doc = mendeley_group.documents.get(id=doc.mendeley_id, view='all')
+                    kwargs = {}
+                    if doc.title != mendeley_doc.title:
+                        kwargs['title'] = doc.title
+                    elif doc.abstract != mendeley_doc.abstract:
+                        kwargs['abstract'] = doc.abstract
+
+                    kwargs['tags'] = doc.tags.split(', ')
+                    # print(kwargs)
+                    # mendeley_doc.update(kwargs)
+                    mendeley_doc.update(tags=kwargs['tags'])
+
+                return render(request, 'admin_group_details.html', context)
+                pass
+            elif request.POST['action'] == 'delete':
+                pass
     else:
         return HttpResponseForbidden()
 
@@ -226,7 +266,7 @@ def admin_add_group(request):
                         existing_group.name = name
                         existing_group.mendeley_username = mendeley_user,
                         existing_group.mendeley_password = mendeley_password
-                        g.save()
+                        existing_group.save()
                     except MendeleyGroup.DoesNotExist :
                         # Then create the new object
                         g = MendeleyGroup(
