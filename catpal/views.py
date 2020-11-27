@@ -261,7 +261,7 @@ def admin_groups(request):
     else:
         return HttpResponseForbidden()
 
-
+"""
 def admin_group_details(request, group_id):
     if request.user.is_staff and request.user.is_staff:
         context = {}
@@ -327,8 +327,119 @@ def admin_group_details(request, group_id):
                 pass
     else:
         return HttpResponseForbidden()
+"""
+def admin_group_details(request, group_id):
+    if request.user.is_staff and request.user.is_staff:
+        context = {}
+        group = MendeleyGroup.objects.get(mendeley_id=group_id)
+        context['group'] = group
+        all_users = User.objects.all().difference(group.user_set.all())
+        context['all_users'] = all_users
+        group_users = group.user_set.all()
+        context['group_users'] = group_users
 
 
+        if request.method == 'GET':
+            return render(request, 'admin_group_details.html', context)
+
+        elif request.method == 'POST':
+            if request.POST['action'] == 'syncfrommendeley':
+                # Search for the documents in the group
+                md.authenticate(group.mendeley_username, group.mendeley_password)
+                mendeley_docs = md.get_documents_of_group(group_id)
+                # for now only check not to have duplicates.
+                for mendeley_doc in mendeley_docs:
+                    try:
+                        # if the document exist in the database
+                        doc = Document.objects.get(mendeley_id=mendeley_doc.id)
+                        doc.title = mendeley_doc.title
+                        doc.abstract = mendeley_doc.abstract
+                        if mendeley_doc.tags is None:
+                            doc.tags = []
+                        else:
+                            doc.tags = ', '.join(mendeley_doc.tags)
+
+                        doc.save()
+                    except Document.DoesNotExist:
+                        # create the document if does not exist in the database
+                        tags = None
+                        if mendeley_doc.tags is None:
+                            tags = []
+                        else:
+                            tags = ', '.join(mendeley_doc.tags)
+                        doc = Document(
+                            mendeley_id = mendeley_doc.id,
+                            title = mendeley_doc.title,
+                            tags = ', '.join(tags),
+                            abstract = mendeley_doc.abstract,
+                        )
+                        doc.save()
+                        group.documents.add(doc)
+                        pass
+                context['sync_changes'] = mendeley_docs
+                return render(request, 'admin_group_details.html', context)
+
+            elif request.POST['action'] == 'synctomendeley':
+                md.authenticate(group.mendeley_username, group.mendeley_password)
+                mendeley_group = md.get_group(group.mendeley_id)
+                for doc in group.documents.all():
+                    # get the corresponding Mendeley document
+                    mendeley_doc = mendeley_group.documents.get(id=doc.mendeley_id, view='all')
+                    kwargs = {}
+                    if doc.title != mendeley_doc.title:
+                        kwargs['title'] = doc.title
+                    elif doc.abstract != mendeley_doc.abstract:
+                        kwargs['abstract'] = doc.abstract
+
+                    kwargs['tags'] = doc.tags.split(', ')
+                    # print(kwargs)
+                    # mendeley_doc.update(kwargs)
+                    mendeley_doc.update(tags=kwargs['tags'])
+
+                return render(request, 'admin_group_details.html', context)
+                pass
+            elif request.POST['action'] == 'delete':
+                pass
+
+            elif request.POST['action'] == 'adduser':
+                userslist = request.POST.getlist('user')
+
+                for el in userslist:
+                    #aux = User.objects.all.filter(id=el)[0]
+                    #aux.groups.add(MendeleyGroup.objects.get(mendeley_id=group_id))
+                    group.user_set.add(User.objects.get(id=el))
+                    group.save()
+
+                all_users = User.objects.all().difference(group.user_set.all())
+                #exclude(MendeleyGroup.objects.get(mendeley_id=group_id).user_set().all())
+                context['all_users'] = all_users
+                group_users = group.user_set.all()
+                context['group_users'] = group_users
+                print(context['group_users'])
+                print('add')
+
+                return render(request, 'admin_group_details.html', context)
+
+
+            elif request.POST['action'] == 'removeuser':
+                #User.objects.all()[1].groups.all().delete(MendeleyGroup.objects.get(mendeley_id=group_id)[0])
+                userslist = request.POST.getlist('user')
+
+                for el in userslist:
+                    group.user_set.remove(User.objects.get(id=el))
+                    group.save()
+
+                all_users = User.objects.all().difference(group.user_set.all())
+                context['all_users'] = all_users
+                group_users = group.user_set.all()
+                context['group_users'] = group_users
+                print(context['group_users'])
+                print('remover')
+
+                return render(request, 'admin_group_details.html', context)
+
+        else:
+                return HttpResponseForbidden()
 def admin_users(request):
     if request.user.is_staff and request.user.is_staff:
         users = User.objects.all()

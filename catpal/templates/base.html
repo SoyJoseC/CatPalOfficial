@@ -9,17 +9,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <script src="{% static 'js/main.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
     <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
 
 
-    {% block title %}<title>Hello, world!</title>{% endblock %}
+    {% block title %}<title>Catpal</title>{% endblock %}
 
   </head>
   <body>
     <style>
+      *{
+        font-family: 'Abel', sans-serif;
+        
+      }
+      /*
+      body{
+        background-image: url('/static/images/fondo patrones 2.jpg');
+        background-repeat: repeat;
+        backdrop-filter: grayscale(54%);
+      }
+*/
       .nav1{
           height: 30%;
           overflow:scroll;
@@ -31,13 +43,13 @@
       }
 
       .nav_bar_button_admin{
-          border-style: dashed;
+
           border-color: red;
       }
       .error_message{
           color: red;
       }
-      .div_group{
+      .div_group2{
           border-style: solid;
           border-width: 1px;
           border-color: black;
@@ -45,6 +57,25 @@
           padding:15px;
           margin:10px;
       }
+
+      .div_group{
+        list-style: none;
+
+        width: inherit;
+        background-color: rgba(0, 140, 255, 0.096);
+        border-left: 5px solid rgba(0, 140, 255, 0.616);
+        margin: 15px;
+        padding-left: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+
+
+    }
+   .div_group:hover{
+        /*background-color: lavenderblush;*/
+        transform: scale(1.03);
+    }
+
       .cat_container{
           height: 30%;
           overflow:scroll;
@@ -67,13 +98,23 @@
 
       .element{
           height: 50px;
-          margin: 2px;
-          background-color: rgba(182, 182, 182, 0.425);
+          margin:4px;
+          
+          border-radius: 10px;
+          
+          background-color: rgba(0, 140, 255, 0.151);
+          border-style: solid;
+          border-width: 1px;
+          border-color:  rgba(0, 140, 255, 0.616);
+          padding-left: 10px;
+          min-width: 200px;
+          width: fit-content;
+          
 
       }
 
       .element:hover{
-          background-color: rgba(182, 182, 182, 0.829);
+          background-color:rgba(146, 172, 245, 0.623);
 
       }
   </style>
@@ -96,7 +137,9 @@
           <li class="nav-item active nav_bar_button">
           <a class="nav-link" href="{% url 'groups' %}"> Grupos del Usuario</a>
         </li>
-
+          <li class="nav-item active nav_bar_button">
+          <a class="nav-link" href="{% url 'categories' %}">Categorias</a>
+        </li>
           <li class="nav-item active nav_bar_button">
           <a class="nav-link" href="{% url 'logout' %}">Salir: {{ user.username }}</a>
         </li>
@@ -130,6 +173,9 @@
 
       </div>
     </nav>
+<br>
+<br>
+<br>
 
 <div class="container">
 
