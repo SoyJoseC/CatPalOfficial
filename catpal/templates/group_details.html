@@ -9,23 +9,29 @@
 
 <!--this is because the h1 hides behind the navbar-->
 <br><br><br>
-
+<style>
+    
+</style>
 {%  for error in errors %}
     <div>
         {{ error }}
     </div>
 {% endfor %}
+<div>
 
-<h1>{{ group.name }}</h1>
+    <div>
+<h1>Grupo {{ group.name }}</h1>
 
-<p> {{ group.mendeley_id }}</p>
-<p> {{ group.mendeley_username }}</p>
+<p> <b>Id:</b> {{ group.mendeley_id }}</p>
+<p> <b>Administrador:</b> {{ group.mendeley_username }}</p>
 
 
-<a href="{% url 'group_documents' group_id=group.mendeley_id %}">Documentos</a>
+<a class='btn btn-primary'href="{% url 'group_documents' group_id=group.mendeley_id %}">Documentos del Grupo</a>
 
     {% block staff%}
 
     {% endblock %}
+        </div>
 
+</div>
 {% endblock %}

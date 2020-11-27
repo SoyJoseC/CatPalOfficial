@@ -9,18 +9,28 @@
 <!--this is because the h1 hides behind the navbar-->
 <br><br><br>
 
-<h1>Group "{{group.name}}" Documents</h1>
+
 
 <style>
     #listaDoc li{
         list-style: none;
         height: 75px;
-        width: 80%;
-        background-color: rgba(120, 107, 240, 0.151);
-        border-left: 5px solid rgba(120, 107, 240, 0.562);
+        width: inherit;
+        background-color: rgba(0, 140, 255, 0.096);
+        border-left: 5px solid rgba(0, 140, 255, 0.616);
         margin: 15px;
-        text-indent: 2%;
-
+        padding-left: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+        
+     
+    }
+    #listaDoc li:hover{
+        /*background-color: lavenderblush;*/
+        transform: scale(1.03);
+    }
+    #listaDoc{
+        max-height: 600px;
     }
 
     .cat_tree_container li{
@@ -35,18 +45,19 @@
 
 
 <div class="row">
-    <div class="col-8">
-<ul id="listaDoc">
+    <div class="col-12">
+        <h1>Group "{{group.name}}" Documents</h1>  <a href="{%url 'admin_group_details' group.mendeley_id %}"><button class="btn btn-primary">Regresar a Administrar Grupo {{group.name}}</button></a>
+
+<ul class ="overflow-auto" id="listaDoc">
     {% for doc in documents %}
         <li>
-            <a href="{% url 'document_detail' group_id=group.mendeley_id doc_id=doc.mendeley_id %}">{{doc.title|truncatechars:100}}</a>
+            <a href="{% url 'article-detail' doc.pk %}">{{doc.title|truncatechars:100}}</a>
             {{doc.tags}}
             <br />
-            <small><a href="{% url 'document_edit' group_id=group.mendeley_id doc_id=doc.mendeley_id %}">(Edit)</a>
+            <small><a href="{% url 'update_doc' doc.pk %}">(Edit)</a>
             </small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
         </li>
     {% endfor %}
 </ul>
-
-</div>
+        </div>
 {% endblock %}

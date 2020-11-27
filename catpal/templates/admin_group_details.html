@@ -5,29 +5,112 @@
 {% endblock %}
 
 
-
 {% block staff%}
-    <br>
-    <a href="{% url 'group_categories' group_id=group.mendeley_id %}">Editar Categorias</a>
 
+<style>
+    .user-col{
+        border-radius: 10px;
+        background-color: rgba(0, 255, 255, 0.151);
+    }
+    .g-user-col{
+        border-radius: 10px;
+        background-color: hsla(236, 84%, 71%, 0.233);
+    }
+    input{
+        margin: 5px;
+    }
+
+    #Synchronized_detected_changes {
+        max-height: 300px;
+        max-width: fit-content;
+        overflow: scroll;
+    }
+    #Synchronized_detected_changes p{
+        
+        border-radius: 10px;
+        background-color: rgba(124, 211, 153, 0.151);
+        font-size: small;
+        margin: 1px;
+        
+    }
+
+</style>
+
+<div class="row">
+
+    <div class="col-4">
+    <h3>Acciones</h3>
     <form method="post">
         {% csrf_token %}
         <input type="hidden" name="action" value="syncfrommendeley">
-        <input type="submit" value="Sincronizar desde Mendeley">
+        <input class="btn btn-secondary" type="submit" value="Sincronizar desde Mendeley">
     </form>
 
     <form method="post">
         {% csrf_token %}
         <input type="hidden" name="action" value="synctomendeley">
-        <input type="submit" value="Sincronizar hacia Mendeley">
+        <input class="btn btn-secondary" type="submit" value="Sincronizar hacia Mendeley">
     </form>
 
     <form method="post">
         {% csrf_token %}
         <input type="hidden" name="action" value="delete">
-        <input type="submit" value="TODO Eliminar">
+        <input class="btn btn-secondary" type="submit" value="TODO Eliminar">
     </form>
 
+    
+</div>
+    <div class="col-8">
+        <h3>Administrar Usuarios</h3>
+        <div class="row">
+        <div class="col-4 user-col">
+            <h3>Usuarios</h3>
+            <div id="all-users-checks">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% for user in all_users %}
+                        <div>
+                            <input type="checkbox" name="user" value="{{user.id}}">
+                            <label for="{{user.username}}">{{user.username}}</label>
+                                <br>
+                        </div>
+
+                    {% endfor %}
+                    <input type="hidden" name="action" value="adduser">
+                    <input type="submit" id="moveto" class = "btn btn-primary" value="Mover a...>">
+                </form>
+            </div>
+
+    </div>
+            <div class="col-1">
+                
+            </div>
+    <div class="col-5 g-user-col">
+        <div>
+            <h3>Usuarios del Grupo</h3>
+                <div id="g-checks">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {% for user in group_users %}
+                             <input type="checkbox" name="user" value="{{user.id}}">
+                            <label for="{{user.username}}">{{user.username}}</label>
+                            <br>
+                        {% endfor %}
+                        <input type="hidden" name="action" value="removeuser">
+                        <input type="submit" class="btn btn btn-danger" id="removefrom" name="removeuser" value="Remover...">
+                    </form>
+                </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+</div>
+<div class="row">
     <div id="Synchronized_detected_changes">
         {% if sync_changes %}
             <h3>Cambios encontrados </h3>
@@ -36,21 +119,22 @@
             {% endfor %}
         {% endif%}
     </div>
-
-    <div>
-        <h3>usuarios</h3>
-        {% for user in all_users %}
-            {{user.username}}
-        {% endfor %}
-    </div>
-
-    <div>
-        <h3>usuarios del Grupo</h3>
-        {% for user in group_users %}
-            {{user.username}}
-        {% endfor %}
-    </div>
-
+</div>    
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
