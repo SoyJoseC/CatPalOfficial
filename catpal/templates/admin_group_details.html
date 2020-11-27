@@ -7,6 +7,9 @@
 
 
 {% block staff%}
+    <br>
+    <a href="{% url 'group_categories' group_id=group.mendeley_id %}">Editar Categorias</a>
+
     <form method="post">
         {% csrf_token %}
         <input type="hidden" name="action" value="syncfrommendeley">
@@ -32,6 +35,20 @@
                 <p>{{change.title}}</p>
             {% endfor %}
         {% endif%}
+    </div>
+
+    <div>
+        <h3>usuarios</h3>
+        {% for user in all_users %}
+            {{user.username}}
+        {% endfor %}
+    </div>
+
+    <div>
+        <h3>usuarios del Grupo</h3>
+        {% for user in group_users %}
+            {{user.username}}
+        {% endfor %}
     </div>
 
 {% endblock %}

@@ -39,10 +39,10 @@
 <ul id="listaDoc">
     {% for doc in documents %}
         <li>
-            <a href="{% url 'article-detail' doc.pk %}">{{doc.title|truncatechars:100}}</a>
+            <a href="{% url 'document_detail' group_id=group.mendeley_id doc_id=doc.mendeley_id %}">{{doc.title|truncatechars:100}}</a>
             {{doc.tags}}
             <br />
-            <small><a href="{% url 'update_doc' doc.pk %}">(Edit)</a>
+            <small><a href="{% url 'document_edit' group_id=group.mendeley_id doc_id=doc.mendeley_id %}">(Edit)</a>
             </small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
         </li>
     {% endfor %}

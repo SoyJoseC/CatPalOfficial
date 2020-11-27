@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>{{doc.title}}</title>
+{% endblock %}
+
+
+{% block content%}
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-12">
+        <h1>{{doc.title}} (Edit)</h1>
+
+        {% if user.is_authenticated %}
+            <br />
+            <small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small>
+        {% endif %}
+
+    </div>
+</div>
+
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-12">
+            Tags: <input type="text" name="tags" value="{{doc.tags}}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-5">
+            <h5>Categories</h5>
+            <ul>
+                {% for element in cat_tree %}
+                    <li>
+                        {% if element.has_cat %}
+                            <input type="checkbox" name="cats" value="{{element.category.cat_id}}" checked="true">
+                        {% else %}
+                            <input type="checkbox" name="cats" value="{{element.category.cat_id}}" >
+                        {% endif %}
+                        {{element.str}}
+                    </li>
+                {% endfor %}
+                    <input type="submit" name="action" value="Guardar">
+            </ul>
+        </div>
+
+        <div class="col-7">
+            <h5>Abstract</h5>
+            <p>{{doc.abstract}}</p>
+        </div>
+    </div>
+</form>
+<br />
+
+
+
+
+{% endblock %}

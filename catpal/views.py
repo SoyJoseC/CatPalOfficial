@@ -6,7 +6,8 @@ from django.urls import reverse_lazy
 
 from .forms import DocumentForm, EditDocumentForm
 from catpal.models import Document, Category, MendeleyGroup
-from  members.models import User
+from members.models import User
+import catpal.utils as utils
 
 # mendeley imports
 from .Mendeley import mendeley_driver as md
@@ -42,6 +43,45 @@ class ArticleDetailView(DetailView):
     model = Document
     template_name = 'article_detail.html'
 
+
+def document_detail(request, group_id, doc_id):
+    group = MendeleyGroup.objects.get(mendeley_id=group_id)
+    doc = Document.objects.get(mendeley_id=doc_id)
+    root_cat = Category.objects.filter(group=group).get(cat_id=group.mendeley_id)
+    cat_tree = utils.tree_to_list(root_cat)
+    for cat in cat_tree:
+        if cat['category'] in doc.categories.all():
+            cat['has_cat'] = True
+        else:
+            cat['has_cat'] = False
+    context = {'group':group, 'doc':doc, 'cat_tree':cat_tree}
+    return render(request, 'document_detail.html', context)
+
+
+def document_edit(request, group_id, doc_id):
+    group = MendeleyGroup.objects.get(mendeley_id=group_id)
+    doc = Document.objects.get(mendeley_id=doc_id)
+
+    if(request.method=='POST'):
+        tags = request.POST['tags']
+        cats = request.POST.getlist('cats')
+        doc.tags = tags
+        for cat in cats:
+            print('cat:', cat)
+            category = Category.objects.get(cat_id=cat)
+            doc.categories.add(category)
+        doc.save()
+        return redirect('document_detail', group_id=group_id, doc_id=doc_id)
+
+    root_cat = Category.objects.filter(group=group).get(cat_id=group.mendeley_id)
+    cat_tree = utils.tree_to_list(root_cat)
+    for cat in cat_tree:
+        if cat['category'] in doc.categories.all():
+            cat['has_cat'] = True
+        else:
+            cat['has_cat'] = False
+    context = {'group':group, 'doc':doc, 'cat_tree':cat_tree}
+    return render(request, 'document_edit.html', context)
 
 
 class AddDocumentView(CreateView):
@@ -137,9 +177,79 @@ def group_documents(request, group_id):
     group = MendeleyGroup.objects.get(mendeley_id=group_id)
     context['group'] = group
     # Get the documents that belongs to the group.
-    documents = group.documents.all()
+    documents = group.documents().all()
     context['documents'] = documents
     return render(request, 'group_documents.html', context)
+
+
+def group_categories(request, group_id):
+    group = MendeleyGroup.objects.get(mendeley_id=group_id)
+    cats = Category.objects.filter(group=group)
+    root = cats.get(cat_id = group.mendeley_id)
+    context = {}
+    context['group'] = group
+    if request.method == 'POST':
+        data = request.POST
+        print(data)
+        if 'selected' in data.keys():
+            if data['action'] == 'Crear' and 'new_name' in data.keys():
+                selected = data['selected']
+                new_name = data['new_name']
+                parent = cats.get(cat_id=selected)
+                Category(name=new_name, parent=parent, group=group).save()
+
+            elif data['action'] == 'Renombrar' and 'rename' in data.keys():
+                selected = data['selected']
+                new_name = data['rename']
+                c = cats.get(cat_id=selected)
+                c.name = new_name
+                c.save()
+
+            elif data['action'] == 'Pop':
+                selected = data['selected']
+                selected = cats.get(cat_id=selected)
+                for child in selected.childs():
+                    child.parent = selected.parent
+                    child.save()
+                selected.delete()
+
+            elif data['action'] == 'Eliminar':
+                selected = data['selected']
+                selected = Category.objects.get(cat_id=selected)
+                selected.delete()
+
+            elif data['action'] == 'Combinar':
+                selected = request.POST.getlist('selected')
+                merge_to = data['merge_to']
+
+                merge_to = Category.objects.get(name=merge_to)
+
+                if merge_to.cat_id in selected:
+                    selected.remove(merge_to.cat_id)
+
+                # move all the data of selected to merge to
+                # todo hay que tener en cuenta que si
+                #  se mueve un padre hacia un hijo, se crea un ciclo
+                #  y se pierden estos nodos del arbol
+                for cat in selected:
+                    cat = Category.objects.get(cat_id=cat)
+                    # move the childs to merge_to
+                    for child in cat.childs():
+                        child.parent = merge_to
+                        child.save()
+                    # todo move also the documents in this category to merge to
+
+                    # delete the category
+                    cat.delete()
+
+        else:
+            print('error')
+            print(data['selected'])
+
+    tree_to_list = utils.tree_to_list(root)
+    context['categories_tree'] = tree_to_list
+
+    return render(request, 'categories.html', context)
 
 
 # *************************************Staff Views**********************************************
@@ -157,6 +267,11 @@ def admin_group_details(request, group_id):
         context = {}
         group = MendeleyGroup.objects.get(mendeley_id=group_id)
         context['group'] = group
+        all_users = User.objects.all()
+        context['all_users'] = all_users
+        group_users = group.user_set.all()
+        context['group_users'] = group_users
+
 
         if request.method == 'GET':
             return render(request, 'admin_group_details.html', context)

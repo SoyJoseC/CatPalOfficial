@@ -78,7 +78,7 @@
       }
   </style>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 
       <a class="navbar-brand" href="{% url 'home' %}">CatPal</a>
 
@@ -96,9 +96,11 @@
           <li class="nav-item active nav_bar_button">
           <a class="nav-link" href="{% url 'groups' %}"> Grupos del Usuario</a>
         </li>
+
           <li class="nav-item active nav_bar_button">
           <a class="nav-link" href="{% url 'logout' %}">Salir: {{ user.username }}</a>
         </li>
+
 
           {% if user.is_staff %}
           <li class="nav-item active nav_bar_button_admin">
@@ -128,7 +130,9 @@
 
       </div>
     </nav>
+
 <div class="container">
+
 {% block content %}
 
 {% endblock %}
