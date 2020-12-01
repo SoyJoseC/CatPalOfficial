@@ -22,11 +22,11 @@ urlpatterns = [
     # path('categories', views.categories, name='categories'),
 
 
-    #path('document/', ArticleDetailView.as_view(),name='article-detail'),
+    # path('document/', ArticleDetailView.as_view(),name='article-detail'),
     # path('document/<int:pk>/', views.ArticleDetailView.as_view(), name = 'article-detail'),
     path('add_doc/', views.AddDocumentView.as_view(), name = 'add_post'),
-    path('bulk_add_docs/', views.bulk_add_docs, name ="bulk_add_docs"),
-    path('bulk_add_cats/', views.bulk_add_cats, name='bulk_add_cats'),
+    # path('bulk_add_docs/', views.bulk_add_docs, name ="bulk_add_docs"),
+    # path('bulk_add_cats/', views.bulk_add_cats, name='bulk_add_cats'),
     # path('document/edit/<pk>/', views.UpdateDocumentView.as_view(), name = 'update_doc'),
     path('document/<pk>/remove', views.DeleteDocumentView.as_view(), name = 'delete_doc'),
 

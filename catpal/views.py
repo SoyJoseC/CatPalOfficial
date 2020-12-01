@@ -354,19 +354,11 @@ def admin_group_details(request, group_id):
                         doc = Document.objects.get(mendeley_id=mendeley_doc.id)
                         doc.title = mendeley_doc.title
                         doc.abstract = mendeley_doc.abstract
-                        if mendeley_doc.tags is None:
-                            doc.tags = []
-                        else:
-                            doc.tags = ', '.join(mendeley_doc.tags)
-
+                        doc.tags = ', '.join(mendeley_doc.tags) if mendeley_doc.tags is not None else []
                         doc.save()
                     except Document.DoesNotExist:
                         # create the document if does not exist in the database
-                        tags = None
-                        if mendeley_doc.tags is None:
-                            tags = []
-                        else:
-                            tags = ', '.join(mendeley_doc.tags)
+                        tags = ', '.join(mendeley_doc.tags) if mendeley_doc.tags is not None else []
                         doc = Document(
                             mendeley_id = mendeley_doc.id,
                             title = mendeley_doc.title,
