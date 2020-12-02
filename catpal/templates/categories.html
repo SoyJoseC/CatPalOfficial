@@ -1,27 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Categorias</h1>
+{% block title %}
+    <title>Categorias: {{group.name}}</title>
+{% endblock %}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<h1>Categorias del Grupo: {{group.name}}</h1>
+
 
 <form method="post">
     {% csrf_token %}
+    <div class="row">
+    <div class="col-8">
 {% for category in categories_tree %}
 
-    <input type="checkbox" value="{{category.category.name}}" name="selected">
+    <input type="checkbox" value="{{category.category.cat_id}}" name="selected">
     <label for="selected">{{category.str}}</label>
     <br>
 
 {% endfor %}
+    </div>
     <br>
+    <div class="col-4">
     <div>
-        <label>name</label>
+        <span>name</span>
         <input type="text" name="new_name">
         <input type="submit" name="action" value="Crear">
+    </div>
+
+    <div>
+        <label>name</label>
+        <input type="text" name="rename">
+        <input type="submit" name="action" value="Renombrar">
     </div>
 
     <div>
@@ -37,7 +51,8 @@
         <input type="text" name="merge_to">
         <input type="submit" name="action" value="Combinar">
     </div>
+        </div>
+        </div>
 </form>
 
-</body>
-</html>
+{% endblock %}
