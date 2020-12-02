@@ -355,6 +355,7 @@ def admin_group_details(request, group_id):
                         doc.title = mendeley_doc.title
                         doc.abstract = mendeley_doc.abstract
                         doc.tags = ', '.join(mendeley_doc.tags) if mendeley_doc.tags is not None else []
+
                         doc.save()
                     except Document.DoesNotExist:
                         # create the document if does not exist in the database
@@ -365,9 +366,11 @@ def admin_group_details(request, group_id):
                             tags = ', '.join(tags),
                             abstract = mendeley_doc.abstract,
                         )
+
                         doc.save()
-                        group.documents.add(doc)
-                        pass
+
+                        group.document_set.add(doc)
+
                 context['sync_changes'] = mendeley_docs
                 return render(request, 'admin_group_details.html', context)
 
