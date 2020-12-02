@@ -77,7 +77,7 @@ def authenticate(user_email, user_password):
         global ACCESS_TOKEN
         ACCESS_TOKEN = session.token['access_token']
     except Exception as exc:
-        raise Exception("Error de autenticacion. Asegurese de que esta conectado a Internet.")
+        raise exc
 
 
 def get_documents():

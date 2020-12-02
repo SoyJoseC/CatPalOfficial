@@ -357,6 +357,13 @@ def admin_group_details(request, group_id):
                         doc.tags = ', '.join(mendeley_doc.tags) if mendeley_doc.tags is not None else []
 
                         doc.save()
+                        # if document is already in the database but not in the group
+                        # has to be added to the group.
+                        try:
+                            _ = group.document_set.get(mendeley_id=mendeley_doc.id)
+                        except Document.DoesNotExist:
+                            group.document_set.add(doc)
+
                     except Document.DoesNotExist:
                         # create the document if does not exist in the database
                         tags = ', '.join(mendeley_doc.tags) if mendeley_doc.tags is not None else []
@@ -485,7 +492,7 @@ def admin_add_group(request):
                         existing_group = MendeleyGroup.objects.get(mendeley_id=id)
                         # update in the database
                         existing_group.name = name
-                        existing_group.mendeley_username = mendeley_user,
+                        existing_group.mendeley_username = mendeley_user
                         existing_group.mendeley_password = mendeley_password
                         existing_group.save()
                     except MendeleyGroup.DoesNotExist :
