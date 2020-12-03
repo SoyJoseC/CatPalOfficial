@@ -26,61 +26,71 @@
 
 <form method="post">
     {% csrf_token %}
+
     <input type="hidden" name="form_id" value="user_data">
     <label>Usuario de mendeley asociado al grupo</label>
     <input type="text" name="mendeley_user"/>
     <label>Contraseña</label>
-    <input type="text" name="mendeley_password"/>
+    <input type="password" name="mendeley_password"/>
 
     <input type="submit" value="Escanear Grupos">
 </form>
 
 {% if groups %}
-    <form method="post">
+
+
+        <form method="post">
         {% csrf_token %}
+    <div class ='row'>
+        <div class="col-10">
+            <input type="hidden" name="form_id" value="groups_data">
+            <input type="hidden" name="mendeley_user" value="{{mendeley_user}}"/>
+            <input type="hidden" name="mendeley_password" value="{{mendeley_password}}"/>
 
-    <input type="hidden" name="form_id" value="groups_data">
-    <input type="hidden" name="mendeley_user" value="{{mendeley_user}}"/>
-    <input type="hidden" name="mendeley_password" value="{{mendeley_password}}"/>
+            {% for group in groups %}
 
-    {% for group in groups %}
+                <div class="div_group">
+                    <h3>
+                        <input type="checkbox" name="{{group.id}}" value="{{group.name}}">
 
-        <div class="div_group">
-            <h3>
-                <input type="checkbox" name="{{group.id}}" value="{{group.name}}">
+                        {{group.name}}</h3>
 
-                {{group.name}}</h3>
-
-            <div>
+                    <div>
 
 
-                <span>Acceso:</span>
-                {% if group.access_level == "private"%}
+                        <span>Acceso:</span>
+                        {% if group.access_level == "private"%}
 
-                {% elif group.access_level == "invite_only" %}
+                        {% elif group.access_level == "invite_only" %}
 
-                {% elif group.access_level == "public" %}
+                        {% elif group.access_level == "public" %}
 
-                {% endif %}
-                {{group.access_level}}
-                <br>
-                <span>Id:</span>
-                {{group.id}}
-                <br>
-                <a href="{{group.link}}">{{group.link}}</a>
-                <br>
-                <span>Rol:</span>
-                {{group.role}}
-                <br>
-                <span>Tags:</span>
-                {{group.tags}}
+                        {% endif %}
+                        {{group.access_level}}
+                        <br>
+                        <span>Id:</span>
+                        {{group.id}}
+                        <br>
+                        <a href="{{group.link}}">{{group.link}}</a>
+                        <br>
+                        <span>Rol:</span>
+                        {{group.role}}
+                        <br>
+                        <span>Tags:</span>
+                        {{group.tags}}
 
-            </div>
+                    </div>
+                </div>
+
+            {% endfor %}
         </div>
+        <div class="col-2"><input type="submit" value="Añadir Grupos"></div>
+    </div>
 
-    {% endfor %}
-<input type="submit" value="Añadir Grupos">
+
     </form>
+
+
 {% endif %}
 
 <br>
