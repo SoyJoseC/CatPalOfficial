@@ -40,6 +40,8 @@ class MendeleyGroup(models.Model):
             c = Category(name='root', group=self, cat_id=self.mendeley_id)
             c.save()
 
+    def get_docs_amount(self):
+        return self.document_set.all().count()
 
 
 class Category(models.Model):

@@ -68,11 +68,17 @@
                                                                    class="dropdown-toggle nav-link dropdown-user-link"><span
                             class="avatar avatar-online"></span><span class="user-name"><i class="icon-user4"></i> {{ user.username|title }}</span></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#" class="dropdown-item"><i class="icon-head"></i> Cambiar contraseña</a><a href="#" class="dropdown-item"></a>
+                            <a href="{% url 'password_change' %}" class="dropdown-item"><i class="icon-head"></i> Cambiar contraseña</a><a href="#" class="dropdown-item"></a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item"><i class="icon-power3"></i> Salir</a>
+                            <a href="{% url 'logout' %}" class="dropdown-item"><i class="icon-power3"></i> Salir</a>
                         </div>
                     </li>
+                </ul>
+
+                {% else %}
+                <ul class="nav navbar-nav float-xs-right">
+                <a href="{% url 'login' %}" class="nav-link"><span
+                            class="avatar avatar-online"></span><span class="user-name"><i class="icon-user4"></i> Login</span></a>
                 </ul>
                 {% endif %}
             </div>

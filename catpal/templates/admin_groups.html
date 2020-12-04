@@ -9,7 +9,7 @@
 
 <!--this is because the h1 hides behind the navbar-->
 <br><br><br>
-<h1>Groups user</h1>
+<h1>Grupos del Usuario</h1>
 
 {%  for error in errors %}
     <div>
@@ -25,6 +25,8 @@
                 <a href="{% url 'admin_group_details' group_id=group.mendeley_id %}">{{group.name}}</a>
             </h3>
             <div>
+                Contiene {{group.get_docs_amount}} documento(s).
+                <br>
 
                 <span>Acceso:</span>
                 {% if group.access_level == "private"%}

@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path('', views.HomeView.as_view(), name = 'home'),
     path('home/', views.HomeView.as_view(), name = 'home'),
@@ -29,6 +30,5 @@ urlpatterns = [
     # path('bulk_add_cats/', views.bulk_add_cats, name='bulk_add_cats'),
     # path('document/edit/<pk>/', views.UpdateDocumentView.as_view(), name = 'update_doc'),
     path('document/<pk>/remove', views.DeleteDocumentView.as_view(), name = 'delete_doc'),
-
 
 ]
