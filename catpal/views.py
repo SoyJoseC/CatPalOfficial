@@ -329,6 +329,8 @@ def admin_group_details(request, group_id):
         return HttpResponseForbidden()
 """
 def admin_group_details(request, group_id):
+    #todo incluir a las categorias de un documento dentro de los tags
+    # o sea añadirle dentro del field tags del document object
     if request.user.is_staff and request.user.is_staff:
         context = {}
         group = MendeleyGroup.objects.get(mendeley_id=group_id)

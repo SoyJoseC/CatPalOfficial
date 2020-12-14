@@ -36,6 +36,12 @@
     <input type="submit" value="Escanear Grupos">
 </form>
 
+<style>
+    #addGroupButton{
+    position: top-fixed;
+    }
+</style>
+
 {% if groups %}
 
 
@@ -84,7 +90,7 @@
 
             {% endfor %}
         </div>
-        <div class="col-2"><input type="submit" value="Añadir Grupos"></div>
+        <div class="col-2" id="addGroupButton"><input type="submit" value="Añadir Grupos"></div>
     </div>
 
 
