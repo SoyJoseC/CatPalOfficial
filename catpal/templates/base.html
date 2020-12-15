@@ -7,13 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   {% block title %} {% endblock %}
-     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 
 
-<link
-  href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-  rel="stylesheet"
-/>
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+
+
 <!-- Google Fonts -->
 <link
   href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -36,10 +42,10 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
       <div class="container">
 
-        <!-- Brand -->
-        <a class="navbar-brand waves-effect" href="{% url 'home' %}">
-          <strong class="blue-text">Catpal</strong>
-        </a>
+        <!-- Brand Logo and HyperLink -->
+
+
+
 
         <!-- Collapse -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -55,26 +61,28 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-
+        <li class="nav-item  nav_bar_button" ><a class="nav-link" href="{% url 'home' %}">
+          <h4  class="blue-text">Catpal</h4>
+        </a></li>
       {% if user.is_authenticated %}
 
-          <li class="nav-item active nav_bar_button">
+          <li class="nav-item  nav_bar_button">
           <a class="nav-link" href="{% url 'groups' %}"><i class="fas fa-users"></i>  Mis Grupos</a>
 
 
 
 
           {% if user.is_staff %}
-          <li class="nav-item active nav_bar_button_admin">
+          <li class="nav-item  nav_bar_button_admin">
           <a class="nav-link" href="/admin/"><i class="fas fa-toolbox"></i> Admin Django</a>
         </li>
-          <li class="nav-item active nav_bar_button_admin">
+          <li class="nav-item  nav_bar_button_admin">
           <a class="nav-link" href="{% url 'admin_groups' %}">Administrar Grupos</a>
         </li>
-          <li class="nav-item active nav_bar_button_admin">
+          <li class="nav-item  nav_bar_button_admin">
           <a class="nav-link" href="{% url 'admin_users' %}">Administrar Usuarios</a>
         </li>
-          <li class="nav-item active nav_bar_button_admin">
+          <li class="nav-item  nav_bar_button_admin">
           <a class="nav-link" href="{% url 'admin_add_group' %}">Crear Grupos</a>
         </li>
           {% endif %}
@@ -125,28 +133,21 @@
   <!--Footer-->
   <footer class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn">
 
-    <!--Call to action-->
-    <div class="pt-4">
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Download MDB
-        <i class="fas fa-download ml-2"></i>
-      </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-        free tutorial
-        <i class="fas fa-graduation-cap ml-2"></i>
-      </a>
-    </div>
-    <!--/.Call to action-->
 
-    <hr class="my-4">
 
     <!-- Social icons -->
     <div class="pb-4">
-
+      <br>
 
       <a href="https://github.com/SoyJoseC/CatPalOfficial" target="_blank">
         <i class="fab fa-github mr-3"></i>  CatPal by: @EdFer2025 @SoyJoseC
       </a>
+      <br>
+      <br>
+      <div class="footer-copyright py-3">
+      Powered by:
+      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+    </div>
 
     </div>
     <!-- Social icons -->
@@ -160,13 +161,13 @@
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
   <!-- Initializations -->
   <script type="text/javascript">
     // Animations initialization
@@ -178,11 +179,7 @@
 
 <!--BEGIN MDB AND FONT AWESOME-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- MDB -->
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/2.2.1/mdb.min.js"
-></script>
+
 <!--END MDB AND FONT AWESOME-->
 </body>
 
