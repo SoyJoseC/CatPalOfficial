@@ -7,8 +7,6 @@
 
 {% block content %}
 
-<!--this is because the h1 hides behind the navbar-->
-<br><br><br>
 
 
 
@@ -31,9 +29,9 @@
     <label>Usuario de mendeley asociado al grupo</label>
     <input type="text" name="mendeley_user"/>
     <label>Contraseña</label>
-    <input type="password" name="mendeley_password"/>
+    <input class="" type="password" name="mendeley_password"/>
 
-    <input type="submit" value="Escanear Grupos">
+    <input class="btn primary-btn" type="submit" value="Escanear Grupos">
 </form>
 
 <style>
@@ -90,7 +88,7 @@
 
             {% endfor %}
         </div>
-        <div class="col-2" id="addGroupButton"><input type="submit" value="Añadir Grupos"></div>
+        <div class="col-2" id="addGroupButton"><input type="submit" class="btn primary-btn" value="Añadir Grupos" style="position: fixed"></div>
     </div>
 
 
