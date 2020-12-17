@@ -328,6 +328,7 @@ def admin_group_details(request, group_id):
     else:
         return HttpResponseForbidden()
 """
+
 def admin_group_details(request, group_id):
     #todo incluir a las categorias de un documento dentro de los tags
     # o sea añadirle dentro del field tags del document object
@@ -386,7 +387,7 @@ def admin_group_details(request, group_id):
             elif request.POST['action'] == 'synctomendeley':
                 md.authenticate(group.mendeley_username, group.mendeley_password)
                 mendeley_group = md.get_group(group.mendeley_id)
-                for doc in group.documents.all():
+                for doc in group.document_set.all():
                     # get the corresponding Mendeley document
                     mendeley_doc = mendeley_group.documents.get(id=doc.mendeley_id, view='all')
                     kwargs = {}
@@ -396,9 +397,12 @@ def admin_group_details(request, group_id):
                         kwargs['abstract'] = doc.abstract
 
                     kwargs['tags'] = doc.tags.split(', ')
+                    categorieslist = [ el.name for el in doc.categories.all()]
+                    print(categorieslist)
+                    categorieslist.extend(kwargs['tags'])
                     # print(kwargs)
                     # mendeley_doc.update(kwargs)
-                    mendeley_doc.update(tags=kwargs['tags'])
+                    mendeley_doc.update(tags=categorieslist)
 
                 return render(request, 'admin_group_details.html', context)
                 pass

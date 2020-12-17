@@ -75,7 +75,9 @@ class Document(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
-
+    
+    def get_categories(self):
+        return list(self.categories.all)
 
 
 
