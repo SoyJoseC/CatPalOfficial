@@ -43,7 +43,10 @@
             <h3>Herramienta para gestionar documentos de Mendeley</h3>
 
           {% if not user.is_authenticated %}
-          <a target="_blank" href="{% url 'login' %}" class="btn btn-outline-white btn-lg">Iniciar Sesión
+          <a href="{% url 'login' %}" class="btn btn-outline-white btn-lg">Iniciar Sesión
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
+          <a href="{% url 'register' %}" class="btn btn-outline-white btn-lg">Registrarse
             <i class="fas fa-sign-in-alt"></i>
           </a>
             {% endif %}

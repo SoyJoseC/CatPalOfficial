@@ -12,7 +12,9 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">Register</button>
+    <button class="btn btn-secondary">Registrarse</button>
+    <br>
+    <a href="{% url 'login' %}" class="">Iniciar Sesión, si ya tiene cuenta.</a>
 </form>
 </div>
     {% endblock %}

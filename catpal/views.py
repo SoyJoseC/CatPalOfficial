@@ -66,6 +66,7 @@ def document_edit(request, group_id, doc_id):
         tags = request.POST['tags']
         cats = request.POST.getlist('cats')
         doc.tags = tags
+        doc.categories.clear()
         for cat in cats:
             print('cat:', cat)
             category = Category.objects.get(cat_id=cat)
