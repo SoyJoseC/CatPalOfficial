@@ -97,6 +97,10 @@
             {% if user.is_authenticated %}
             <li class="nav-item active nav_bar_button">
           <a class="nav-link" href="{% url 'logout' %}">Salir: {{ user.username }}</a>
+              </li><li class="nav-item active nav_bar_button">
+          <a class="nav-link" href="{% url 'edit_profile' %}">Editar perfil</a>
+              </li>
+
               {% else %}
 
               {% endif %}

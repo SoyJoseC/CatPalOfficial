@@ -2,17 +2,19 @@
 
 
 {% block title %}
-    <title>Change Password</title>
+    <title>Register</title>
 {% endblock %}
 
 {% block content %}
-    <h1>Change Password</h1>
+    <h1>Editar Perfil</h1>
 <br /> <br />
 <div class="form-group">
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">Cambiar contraseña</button>
+    <button class="btn btn-secondary">Aceptar Cambios</button>
+    <br>
+    <br>
 </form>
 </div>
     {% endblock %}
