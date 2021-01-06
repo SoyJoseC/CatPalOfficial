@@ -6,9 +6,6 @@
 
 {% block content %}
 
-<!--this is because the h1 hides behind the navbar-->
-<br><br><br>
-
 
 
 <style>
@@ -45,22 +42,43 @@
 
 
 <div class="row">
-    <div class="col-12">
-        <h1>Group "{{group.name}}" Documents</h1>
-        {% if user.is_staff %}
-        <a href="{%url 'admin_group_details' group.mendeley_id %}"><button class="btn btn-primary">Regresar a Administrar Grupo {{group.name}}</button></a>
-       <a href="{%url 'group_categories' group.mendeley_id %}"><button class="btn btn-primary">Editar Categorías del Grupo</button></a>
-        {% endif %}
-<ul class ="overflow-auto" id="listaDoc">
-    {% for doc in documents %}
-        <li>
-            <a href="{% url 'document_detail' group.mendeley_id doc.mendeley_id %}">{{doc.title|truncatechars:100}}</a>
-            {{doc.tags}}
-            <br />
-            <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">(Edit)</a>
-            </small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
-        </li>
-    {% endfor %}
-</ul>
+    <div class="col-10">
+        <h1>Group "{{group.name}}"</h1>
+
+
+        <br>
+        <h3>Detalles</h3>
+        <hr>
+        <p> <b>Id:</b> {{ group.mendeley_id }}</p>
+        <p> <b>Administrador:</b> {{ group.mendeley_username }}</p>
+
+
+
+        <br>
+        <br>
+        <h3>Documentos</h3>
+
+        <ul class ="overflow-auto" id="listaDoc">
+            {% for doc in documents %}
+                <li>
+                    <a href="{% url 'document_detail' group.mendeley_id doc.mendeley_id %}">{{doc.title|truncatechars:100}}</a>
+                    {{doc.tags}}
+                    <br />
+                    <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">(Edit)</a>
+                    </small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
+                </li>
+            {% empty %}
+                <p>El grupo no contiene documentos actualmente.</p>
+            {% endfor %}
+
+        </ul>
         </div>
+    <div class="col-2 jumbotron   text-center fixed" style="height: 20rem;">
+        <h3>Acciones</h3>
+        {% if user.is_staff %}
+        <a href="{%url 'admin_group_details' group.mendeley_id %}"><button class="btn btn-primary">Administrar Grupo {{group.name}}</button></a>
+        <a href="{%url 'group_categories' group.mendeley_id %}"><button class="btn btn-primary">Editar Categorías del Grupo</button></a>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

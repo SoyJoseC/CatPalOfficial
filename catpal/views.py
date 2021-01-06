@@ -180,6 +180,7 @@ def group_documents(request, group_id):
     # Get the documents that belongs to the group.
     documents = group.documents().all()
     context['documents'] = documents
+    context['group_id'] = group_id
     return render(request, 'group_documents.html', context)
 
 
