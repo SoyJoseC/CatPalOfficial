@@ -9,50 +9,76 @@
 <br>
 <br>
 <br>
-<h1>Categorias del Grupo: {{group.name}}</h1>
+<h1>Categorías del Grupo: {{group.name}}</h1>
 
 
 <form method="post">
     {% csrf_token %}
     <div class="row">
-    <div class="col-8">
+    <div class="col-6">
+
 {% for category in categories_tree %}
 
-    <input type="checkbox" value="{{category.category.cat_id}}" name="selected">
-    <label for="selected">{{category.str}}</label>
+        {% if category == categories_tree|first %}
+
+            <input class = 'form-check-input root' type="checkbox" value="{{category.category.cat_id}}" name="selected" id = "{{category.category.cat_id}}">
+            <label class = 'form-check-label' for="{{category.category.cat_id}}">{{category.str}}</label>
+        <br>
+        {% else %}
+    <input class = 'form-check-input' type="checkbox" value="{{category.category.cat_id}}" name="selected" id = "{{category.category.cat_id}}">
+    <label class = 'form-check-label' for="{{category.category.cat_id}}">{{category.str}}</label>
     <br>
+{% endif %}
 
 {% endfor %}
     </div>
     <br>
-    <div class="col-4">
+    <div class="col-6">
     <div>
-        <span>name</span>
-        <input type="text" name="new_name">
-        <input type="submit" name="action" value="Crear">
+        <input class="btn btn-primary" type="submit" name="action" value="Crear Categoría">
+        <input type="text" name="new_name" placeholder="Nombre de la nueva categoría">
     </div>
 
     <div>
-        <label>name</label>
-        <input type="text" name="rename">
-        <input type="submit" name="action" value="Renombrar">
+        <input  class="btn btn-primary" type="submit" name="action" value="Renombrar">
+        <input  type="text" name="rename" placeholder="Nombre nuevo">
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" name="action" value="Combinar">
+        <input type="text" name="merge_to" placeholder="Combinar en ... ">
     </div>
 
     <div>
-        <input type="submit" name="action" value="Pop">
+        <input class="btn btn-danger" type="submit" name="action" value="Pop" id="pop-btn">
+
+        <input class="btn btn-danger" type="submit" name="action" value="Eliminar" id="delete-btn">
     </div>
 
-    <div>
-        <input type="submit" name="action" value="Eliminar">
-    </div>
-
-    <div>
-        <label>Combinar en</label>
-        <input type="text" name="merge_to">
-        <input type="submit" name="action" value="Combinar">
-    </div>
         </div>
         </div>
+    <script>
+
+
+
+    var root = document.getElementsByClassName('root')[0];
+    root.addEventListener('change', function f() {
+        if (root.checked){
+            document.getElementById('pop-btn').disabled = true
+            document.getElementById('delete-btn').disabled = true
+
+        }
+        else {
+            document.getElementById('pop-btn').disabled = false
+            document.getElementById('delete-btn').disabled = false
+
+        }
+
+    });
+
+</script>
 </form>
 
+
+
 {% endblock %}
+

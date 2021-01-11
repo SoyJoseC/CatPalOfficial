@@ -173,7 +173,7 @@ def user_groups(request):
     return render(request, 'user_groups.html', {'groups': groups})
 
 
-def group_documents(request, group_id):
+def group_details_documents(request, group_id):
     context = {}
     group = MendeleyGroup.objects.get(mendeley_id=group_id)
     context['group'] = group
@@ -181,7 +181,7 @@ def group_documents(request, group_id):
     documents = group.documents().all()
     context['documents'] = documents
     context['group_id'] = group_id
-    return render(request, 'group_documents.html', context)
+    return render(request, 'group_details_documents.html', context)
 
 
 def group_categories(request, group_id):
