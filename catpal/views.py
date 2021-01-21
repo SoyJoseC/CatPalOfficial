@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseForbidden
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 from django.utils.datastructures import MultiValueDictKeyError
 from django.urls import reverse_lazy
 
@@ -8,6 +8,7 @@ from .forms import DocumentForm, EditDocumentForm
 from catpal.models import Document, Category, MendeleyGroup
 from members.models import User
 import catpal.utils as utils
+from catpal.forms import AddGroupForm
 
 # mendeley imports
 from .Mendeley import mendeley_driver as md
@@ -43,6 +44,8 @@ class ArticleDetailView(DetailView):
     model = Document
     template_name = 'article_detail.html'
 
+class AboutView(TemplateView):
+    template_name = 'about_us.html'
 
 def document_detail(request, group_id, doc_id):
     group = MendeleyGroup.objects.get(mendeley_id=group_id)
@@ -371,11 +374,11 @@ def admin_group_details(request, group_id):
 
                     except Document.DoesNotExist:
                         # create the document if does not exist in the database
-                        tags = ', '.join(mendeley_doc.tags) if mendeley_doc.tags is not None else []
+                        tags = ', '.join(mendeley_doc.tags) if mendeley_doc.tags is not None else ""
                         doc = Document(
                             mendeley_id = mendeley_doc.id,
                             title = mendeley_doc.title,
-                            tags = ', '.join(tags),
+                            tags = tags,
                             abstract = mendeley_doc.abstract,
                         )
 
@@ -469,10 +472,11 @@ def admin_user_details(request, user_id):
 def admin_add_group(request):
     if request.user.is_staff and request.user.is_staff:
         context = {}
-
+        context['form_prueba'] = AddGroupForm(auto_id='user_data2')
         if request.method == 'POST':
+            #the condition modification is related to the way the view was coded, trying to use form to keep the password encrypted
             if request.POST['form_id'] == 'user_data':
-                mendeley_user = request.POST['mendeley_user']
+                mendeley_user = request.POST['mendeley_username']
                 mendeley_password = request.POST['mendeley_password']
 
                 # Scan mendeley groups using api.

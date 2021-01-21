@@ -22,7 +22,7 @@ urlpatterns = [
 
     # path('categories', views.categories, name='categories'),
 
-
+    path('about/', views.AboutView.as_view(), name = 'about_us'),
     # path('document/', ArticleDetailView.as_view(),name='article-detail'),
     # path('document/<int:pk>/', views.ArticleDetailView.as_view(), name = 'article-detail'),
     path('add_doc/', views.AddDocumentView.as_view(), name = 'add_post'),

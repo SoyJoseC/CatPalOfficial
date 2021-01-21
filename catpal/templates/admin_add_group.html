@@ -26,10 +26,7 @@
     {% csrf_token %}
 
     <input type="hidden" name="form_id" value="user_data">
-    <label>Usuario de mendeley asociado al grupo</label>
-    <input type="text" name="mendeley_user"/>
-    <label>Contraseña</label>
-    <input class="" type="password" name="mendeley_password"/>
+    {{form_prueba}}
 
     <input class="btn primary-btn" type="submit" value="Escanear Grupos">
 </form>

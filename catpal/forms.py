@@ -1,5 +1,5 @@
 from django import forms
-from catpal.models import Document, Category
+from catpal.models import Document, MendeleyGroup
 
 
 class DocumentForm(forms.ModelForm):
@@ -36,3 +36,11 @@ class SelectGroupForm(forms.Form):
 class JsonBulkAddForm(forms.ModelForm):
     jsonField = forms.Textarea(attrs={'class': 'form-control'})
 
+class AddGroupForm(forms.ModelForm):
+
+    class Meta:
+        model = MendeleyGroup
+        fields = ['mendeley_username', 'mendeley_password']
+        widgets = {
+            'mendeley_password': forms.PasswordInput()
+        }
