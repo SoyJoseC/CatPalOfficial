@@ -18,3 +18,8 @@ def parse_link_headers(link):
         parsed_links[key] = value
 
     return parsed_links
+
+from cryptography.fernet import Fernet
+if __name__== "__main__":
+    #trying to generate the same key with the use
+    key = Fernet.generate_key()

@@ -7,7 +7,8 @@
 
 {% block content %}
 
-<h1>Groups user</h1>
+<h1>Mis grupos</h1>
+<hr>
 
 {%  for error in errors %}
     <div>
@@ -15,12 +16,11 @@
     </div>
 {% endfor %}
 
+<div class="card-columns">{% for group in groups %}
 
-{% for group in groups %}
-
-        <div class="div_group">
+        <div class="div_group card  text-center">
             <h3>
-                <a href="{% url 'group_details' group_id=group.mendeley_id %}">{{group.name}}</a>
+                <a class="card-header" href="{% url 'group_details_documents' group_id=group.mendeley_id %}">{{group.name}}</a>
             </h3>
             <div>
 
@@ -38,14 +38,16 @@
                 {{group.id}}
                 <br>
                 <a href="{{group.link}}">{{group.link}}</a>
-                <br>
+                <br><!-- Why the groups should have any tags??
                 <span>Tags:</span>
                 {{group.tags}}
-
+                -->
             </div>
         </div>
 
     {% endfor %}
+</div>
+
 
 
 {% endblock %}

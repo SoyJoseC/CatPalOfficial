@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
+from django_cryptography.fields import encrypt
 from catpal.utils import generate_hash
 
 
@@ -10,6 +10,7 @@ from catpal.utils import generate_hash
 class MendeleyGroup(models.Model):
     # Mendeley User to handle the group
     mendeley_username = models.CharField(max_length=250)
+
     mendeley_password = models.CharField(max_length=250)
     # Mendeley Group Id
     mendeley_id = models.CharField(max_length=36)
@@ -75,7 +76,9 @@ class Document(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
-
+    
+    def get_categories(self):
+        return list(self.categories.all)
 
 
 

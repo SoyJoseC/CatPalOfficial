@@ -7,8 +7,8 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name = 'home'),
     path('home/', views.HomeView.as_view(), name = 'home'),
     path('groups/', views.user_groups , name='groups'),
-    path('groups/<group_id>/', views.group_details, name='group_details'),
-    path('groups/<group_id>/documents/', views.group_documents, name='group_documents'),
+    #path('groups/<group_id>/', views.group_details, name='group_details'),
+    path('groups/<group_id>/', views.group_details_documents, name='group_details_documents'),
     path('groups/<group_id>/documents/<doc_id>/', views.document_detail, name='document_detail'),
     path('groups/<group_id>/documents/<doc_id>/edit/', views.document_edit, name='document_edit'),
     path('groups/<group_id>/categories/', views.group_categories, name='group_categories'),
@@ -22,7 +22,7 @@ urlpatterns = [
 
     # path('categories', views.categories, name='categories'),
 
-
+    path('about/', views.AboutView.as_view(), name = 'about_us'),
     # path('document/', ArticleDetailView.as_view(),name='article-detail'),
     # path('document/<int:pk>/', views.ArticleDetailView.as_view(), name = 'article-detail'),
     path('add_doc/', views.AddDocumentView.as_view(), name = 'add_post'),

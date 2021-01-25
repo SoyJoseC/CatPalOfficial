@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Group "{{group.name}}" Documents</title>
+{% endblock %}
+
+{% block content %}
+
+
+
+<style>
+    #listaDoc li{
+        list-style: none;
+        height: 75px;
+        width: inherit;
+        background-color: rgba(0, 140, 255, 0.096);
+        border-left: 5px solid rgba(0, 140, 255, 0.616);
+        margin: 15px;
+        padding-left: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+        
+     
+    }
+    #listaDoc li:hover{
+        /*background-color: lavenderblush;*/
+        transform: scale(1.03);
+    }
+    #listaDoc{
+        max-height: 600px;
+    }
+
+    .cat_tree_container li{
+        list-style: none;
+    }
+
+    .cat_tree_container ul:first-child{
+        font-size: 20px;
+        font-style: bold;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-10">
+        <h1>Group "{{group.name}}"</h1>
+
+
+
+
+
+        <br>
+        <h3>Detalles</h3>
+        <hr>
+        <p> <b>Id:</b> {{ group.mendeley_id }}</p>
+        <p> <b>Administrador:</b> {{ group.mendeley_username }}</p>
+
+
+
+        <br>
+        <br>
+        <h3>Documentos</h3>
+
+        <ol class ="overflow-auto" id="listaDoc">
+            {% for doc in documents %}
+                <li>
+                    <a href="{% url 'document_detail' group.mendeley_id doc.mendeley_id %}">{{doc.title|truncatechars:100}}</a>
+                    {{doc.tags}}
+                    <br />
+                    <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">(Edit)</a>
+                    </small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
+                </li>
+            {% empty %}
+                <p>El grupo no contiene documentos actualmente.</p>
+            {% endfor %}
+
+        </ol><div>
+            <p>wsq</p>
+                {% if users.has_other_pages %}
+                  <ul class="pagination">
+                    {% if users.has_previous %}
+                      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                    {% for i in users.paginator.page_range %}
+                      {% if users.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                      {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    {% if users.has_next %}
+                      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                  </ul>
+        {% endif %}
+        </div>
+        </div>
+    <div class="col-2 jumbotron   text-center fixed" style="height: 20rem;">
+        <h3>Acciones</h3>
+        {% if user.is_staff %}
+        <a href="{%url 'admin_group_details' group.mendeley_id %}"><button class="btn btn-primary">Administrar Grupo {{group.name}}</button></a>
+        <a href="{%url 'group_categories' group.mendeley_id %}"><button class="btn btn-primary">Editar Categorías del Grupo</button></a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

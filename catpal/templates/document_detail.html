@@ -6,9 +6,12 @@
 
 
 {% block content%}
-<br>
-<br>
-<br>
+
+<style>
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}</style>
 <div class="row">
 <div class="col-12">
     <h1>{{doc.title}}</h1>
@@ -19,6 +22,7 @@ Tags: {{doc.tags}}
 <small><a href="{% url 'document_edit' group_id=group.mendeley_id doc_id=doc.mendeley_id %}">(Edit)</a></small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small>
 {% endif %}
 <br />
+    <a href="{% url 'group_details_documents' group.mendeley_id%}"><button class="btn btn-primary">Regresar a Documentos del Grupo</button></a>
 <hr>
 </div>
 </div>
@@ -40,7 +44,8 @@ Tags: {{doc.tags}}
     </div>
     <div class="col-7">
         <h5>Abstract</h5>
-        <p>{{doc.abstract}}</p>
+        <p style="text-align: justify;
+  text-justify: inter-word">{{doc.abstract}}</p>
 
     <br />
     </div>

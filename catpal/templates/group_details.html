@@ -23,7 +23,7 @@
 <p> <b>Administrador:</b> {{ group.mendeley_username }}</p>
 
 
-<a class='btn btn-primary'href="{% url 'group_documents' group_id=group.mendeley_id %}">Documentos del Grupo</a>
+<a class='btn btn-primary'href="{% url 'group_details_documents' group_id=group.mendeley_id %}">Documentos del Grupo</a>
 
     {% block staff%}
 

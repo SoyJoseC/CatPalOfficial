@@ -26,10 +26,7 @@
     {% csrf_token %}
 
     <input type="hidden" name="form_id" value="user_data">
-    <label>Usuario de mendeley asociado al grupo</label>
-    <input type="text" name="mendeley_user"/>
-    <label>Contraseña</label>
-    <input class="" type="password" name="mendeley_password"/>
+    {{form_prueba}}
 
     <input class="btn primary-btn" type="submit" value="Escanear Grupos">
 </form>
@@ -46,14 +43,14 @@
         <form method="post">
         {% csrf_token %}
     <div class ='row'>
-        <div class="col-10">
+        <div class="col-10 card-columns">
             <input type="hidden" name="form_id" value="groups_data">
             <input type="hidden" name="mendeley_user" value="{{mendeley_user}}"/>
             <input type="hidden" name="mendeley_password" value="{{mendeley_password}}"/>
 
             {% for group in groups %}
 
-                <div class="div_group">
+                <div class="div_group card">
                     <h3>
                         <input type="checkbox" name="{{group.id}}" value="{{group.name}}">
 
@@ -88,7 +85,9 @@
 
             {% endfor %}
         </div>
-        <div class="col-2" id="addGroupButton"><input type="submit" class="btn primary-btn" value="Añadir Grupos" style="position: fixed"></div>
+        <div class="col-2" id="addGroupButton">
+            <h3>Acciones</h3>
+            <input type="submit" class="btn primary-btn" value="Añadir Grupos" style="position: fixed; float: bottom-auto"></div>
     </div>
 
 

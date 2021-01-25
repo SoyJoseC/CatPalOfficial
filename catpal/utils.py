@@ -1,4 +1,14 @@
 import uuid
+import os, json
+from cryptography.fernet import Fernet
+
+config = None
+# print(os.getcwd())
+with open("./catpal/Mendeley/config.json", 'r') as fh:
+    config = json.loads(fh.read())
+
+key = config["ENC_KEY"].encode('utf-8')
+fernet = Fernet(key)
 
 def tree_to_list(root):
     """Recursively converts a tree into a list of idented strings."""
@@ -18,4 +28,6 @@ def node_to_list(node, depth, list):
 
 def generate_hash():
     return str(uuid.uuid4())
+
+
 
