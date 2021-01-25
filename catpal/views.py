@@ -12,6 +12,7 @@ from catpal.forms import AddGroupForm
 
 # mendeley imports
 from .Mendeley import mendeley_driver as md
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Cambios para correr offline sin mendeley
@@ -181,8 +182,19 @@ def group_details_documents(request, group_id):
     group = MendeleyGroup.objects.get(mendeley_id=group_id)
     context['group'] = group
     # Get the documents that belongs to the group.
-    documents = group.documents().all()
-    context['documents'] = documents
+    documents_list = group.document_set.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(documents_list, 10)
+
+    try:
+        documents = paginator.page(page)
+    except PageNotAnInteger:
+        documents = paginator.page(1)
+    except EmptyPage:
+        documents = paginator.page(paginator.num_pages)
+
+    context['documents'] = documents_list
     context['group_id'] = group_id
     return render(request, 'group_details_documents.html', context)
 
@@ -353,7 +365,7 @@ def admin_group_details(request, group_id):
         elif request.method == 'POST':
             if request.POST['action'] == 'syncfrommendeley':
                 # Search for the documents in the group
-                md.authenticate(group.mendeley_username, group.mendeley_password)
+                md.authenticate(group.mendeley_username, utils.fernet.decrypt(group.mendeley_password.lstrip("b'").rstrip("'").encode('utf-8')))
                 mendeley_docs = md.get_documents_of_group(group_id)
                 # for now only check not to have duplicates.
                 for mendeley_doc in mendeley_docs:
@@ -390,7 +402,7 @@ def admin_group_details(request, group_id):
                 return render(request, 'admin_group_details.html', context)
 
             elif request.POST['action'] == 'synctomendeley':
-                md.authenticate(group.mendeley_username, group.mendeley_password)
+                md.authenticate(group.mendeley_username, utils.fernet.decrypt(group.mendeley_password.lstrip("b'").rstrip("'").encode('utf-8')))
                 mendeley_group = md.get_group(group.mendeley_id)
                 for doc in group.document_set.all():
                     # get the corresponding Mendeley document
@@ -403,7 +415,7 @@ def admin_group_details(request, group_id):
 
                     kwargs['tags'] = doc.tags.split(', ')
                     categorieslist = [ el.name for el in doc.categories.all()]
-                    print(categorieslist)
+                    #print(categorieslist)
                     categorieslist.extend(kwargs['tags'])
                     # print(kwargs)
                     # mendeley_doc.update(kwargs)
@@ -486,7 +498,7 @@ def admin_add_group(request):
                     groups = md.get_groups()
                     context['groups'] = groups
                     context['mendeley_user'] = mendeley_user
-                    context['mendeley_password'] = mendeley_password
+                    context['mendeley_password'] = utils.fernet.encrypt(mendeley_password.encode('utf-8'))
                 except Exception as exc:
                     context['errors'] = [str(exc)]
 
@@ -505,7 +517,7 @@ def admin_add_group(request):
                         # update in the database
                         existing_group.name = name
                         existing_group.mendeley_username = mendeley_user
-                        existing_group.mendeley_password = mendeley_password
+                        existing_group.mendeley_password = utils.fernet.encrypt(mendeley_password.encode('utf-8'))
                         existing_group.save()
                     except MendeleyGroup.DoesNotExist :
                         # Then create the new object

@@ -3,5 +3,6 @@
   "CLIENT_SECRET" : "QTAf8AbMyQKUPENB",
   "CLIENT_NAME" : "Kb.Mendeley.Test",
   "REDIRECT_URI" : "http://localhost:5000/oauth",
-  "UNCLASIFIED_FOLDER" : "UNCLASIFIED"
+  "UNCLASIFIED_FOLDER" : "UNCLASIFIED",
+  "ENC_KEY": "5uyPseNHA7x3HiuYSOzEvxbXncliuiT5xn3V8qtAC8g="
 }
