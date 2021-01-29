@@ -186,7 +186,7 @@ def group_details_documents(request, group_id):
     page = request.GET.get('page', 1)
 
     paginator = Paginator(documents_list, 10)
-
+    
     try:
         documents = paginator.page(page)
     except PageNotAnInteger:
@@ -194,7 +194,7 @@ def group_details_documents(request, group_id):
     except EmptyPage:
         documents = paginator.page(paginator.num_pages)
 
-    context['documents'] = documents_list
+    context['documents'] = documents
     context['group_id'] = group_id
     return render(request, 'group_details_documents.html', context)
 
