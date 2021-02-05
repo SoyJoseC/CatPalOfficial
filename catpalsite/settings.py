@@ -25,7 +25,7 @@ SECRET_KEY = 'xq^hdq@qk80#_6rk0$^@i3_)a6!2tai!!*)ct#44w0$y0*ge*%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.25.70', '192.168.25.85', ]
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.25.70', '192.168.25.85', 'catpal.cneuro.cu', ]
 
 
 # Application definition

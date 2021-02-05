@@ -6,7 +6,7 @@ from catpal.utils import generate_hash
 
 
 # Create your models here.
-
+#todo makemigrations
 class MendeleyGroup(models.Model):
     # Mendeley User to handle the group
     mendeley_username = models.CharField(max_length=250)

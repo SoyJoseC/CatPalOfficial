@@ -19,6 +19,7 @@
         padding-left: 10px;
         border-radius: 5px;
         overflow: hidden;
+        list-style-type: decimal;
         
      
     }
@@ -26,6 +27,14 @@
         /*background-color: lavenderblush;*/
         transform: scale(1.03);
     }
+
+    .list-group {
+    list-style: decimal inside;
+}
+
+    .list-group-item {
+    display: list-item;
+}
     
 </style>
 
@@ -49,12 +58,56 @@
         <br>
         <br>
         <h3>Documentos</h3>
+        <br>
+        <div class="d-flex justify-content-center">
 
-        <ol class ="overflow-auto" id="listaDoc">
+                {% if documents.has_other_pages %}
+
+                    <nav aria-label="Page navigation">
+
+                            <ul class="pagination">
+                                <li class="m-2"><span><strong>Páginas</strong></span></li>
+                                {% if documents.number != 1 %}
+                                    <li class="page-item m-2">
+                                  <a class="page-link" href="?page=1" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">begin</span>
+                                  </a>
+                                </li>
+                                {% endif %}
+
+
+
+                                {% for n in documents.paginator.page_range %}
+                                  {% if documents.number == n %}
+                                    <li class="page-item active m-2">
+                                      <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
+                                    </li>
+                                  {% elif n > documents.number|add:'-3' and n < documents.number|add:'3' %}
+                                    <li class="page-item m-2"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+
+                                {% if documents.has_next %}
+                                  <li class="page-item m-2">
+                                    <a class="page-link" href="?page={{ documents.paginator.num_pages }}" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only">end</span>
+                                    </a>
+                                  </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+            {% endif %}
+        </div>
+
+
+
+        <ol  class="list-group" id="listaDoc">
             {% for doc in documents %}
                 <li>
                     <a href="{% url 'document_detail' group.mendeley_id doc.mendeley_id %}">{{doc.title|truncatechars:100}}</a>
-                    {{doc.tags}}
+                    {{doc.tags|truncatechars:50}}
                     <br />
                     <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">(Edit)</a>
                     </small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
@@ -64,12 +117,20 @@
             {% endfor %}
 
         </ol>
-        <div>
+
+        <!--Todo Items per page <form-->
+
+
+        <div class="d-flex justify-content-center">
+
                 {% if documents.has_other_pages %}
-                    <nav aria-label="Page navigation">   
+
+                    <nav aria-label="Page navigation">
+
                             <ul class="pagination">
+                                <li class="m-2"><span><strong>Páginas</strong></span></li>
                                 {% if documents.number != 1 %}
-                                    <li class="page-item">
+                                    <li class="page-item m-2">
                                   <a class="page-link" href="?page=1" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                     <span class="sr-only">begin</span>
@@ -81,16 +142,16 @@
 
                                 {% for n in documents.paginator.page_range %}
                                   {% if documents.number == n %}
-                                    <li class="page-item active">
+                                    <li class="page-item active m-2">
                                       <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
                                     </li>
                                   {% elif n > documents.number|add:'-3' and n < documents.number|add:'3' %}
-                                    <li class="page-item"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                                    <li class="page-item m-2"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
                                   {% endif %}
                                 {% endfor %}
 
                                 {% if documents.has_next %}
-                                  <li class="page-item">
+                                  <li class="page-item m-2">
                                     <a class="page-link" href="?page={{ documents.paginator.num_pages }}" aria-label="Next">
                                       <span aria-hidden="true">&raquo;</span>
                                       <span class="sr-only">end</span>
@@ -101,15 +162,18 @@
                         </nav>
             {% endif %}
         </div>
-
-        </div>
-    <div class="col-2 jumbotron   text-center fixed" style="height: 20rem;">
-        <h3>Acciones</h3>
-        {% if user.is_staff %}
-        <a href="{%url 'admin_group_details' group.mendeley_id %}"><button class="btn btn-primary">Administrar Grupo {{group.name}}</button></a>
-        <a href="{%url 'group_categories' group.mendeley_id %}"><button class="btn btn-primary">Editar Categorías del Grupo</button></a>
-        {% endif %}
     </div>
+    {% if user.is_staff %}
+            <div class="col-2 jumbotron   text-center fixed" style="height: 20rem;">
+                    <h3>Acciones</h3>
+
+                    <a href="{%url 'admin_group_details' group.mendeley_id %}"><button class="btn btn-primary">Administrar Grupo {{group.name}}</button></a>
+                    <a href="{%url 'group_categories' group.mendeley_id %}"><button class="btn btn-primary">Editar Categorías del Grupo</button></a>
+
+                </div>
+    {% endif %}
+        </div>
+
 </div>
 
 {% endblock %}

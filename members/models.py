@@ -7,7 +7,7 @@ Override the User model.
 Add groups to the user model."""
 class User(AbstractUser):
     #Mendeley2 groups
-    groups = models.ManyToManyField(MendeleyGroup)
+    groups = models.ManyToManyField(MendeleyGroup, blank=True)
     #when a MendeleyGroup is selected the User can see the documents belonging to this group.
     current_group = models.ForeignKey(MendeleyGroup, related_name='current_group', on_delete=models.SET_NULL, null=True)
 

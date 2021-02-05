@@ -44,3 +44,4 @@ class AddGroupForm(forms.ModelForm):
         widgets = {
             'mendeley_password': forms.PasswordInput()
         }
+

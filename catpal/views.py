@@ -173,8 +173,22 @@ def group_details(request, group_id):
 
 def user_groups(request):
     # get only the user groups
-    groups = request.user.groups.all()
-    return render(request, 'user_groups.html', {'groups': groups})
+
+    # Get the documents that belongs to the group.
+    groups_list = request.user.groups.all().order_by('id')
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(groups_list, 12)
+
+    try:
+        groups = paginator.page(page)
+    except PageNotAnInteger:
+        groups = paginator.page(1)
+    except EmptyPage:
+        groups = paginator.page(paginator.num_pages)
+
+
+    return render(request, 'user_groups.html', {'groups': groups })
 
 
 def group_details_documents(request, group_id):
@@ -182,7 +196,7 @@ def group_details_documents(request, group_id):
     group = MendeleyGroup.objects.get(mendeley_id=group_id)
     context['group'] = group
     # Get the documents that belongs to the group.
-    documents_list = group.document_set.all()
+    documents_list = group.document_set.all().order_by('id')
     page = request.GET.get('page', 1)
 
     paginator = Paginator(documents_list, 10)
@@ -273,7 +287,17 @@ def group_categories(request, group_id):
 
 def admin_groups(request):
     if request.user.is_staff and request.user.is_staff:
-        groups = MendeleyGroup.objects.all()
+        groups_list = request.user.groups.all().order_by('id')
+        page = request.GET.get('page', 1)
+
+        paginator = Paginator(groups_list, 12)
+
+        try:
+            groups = paginator.page(page)
+        except PageNotAnInteger:
+            groups = paginator.page(1)
+        except EmptyPage:
+            groups = paginator.page(paginator.num_pages)
         return render(request, 'admin_groups.html', {'groups': groups})
     else:
         return HttpResponseForbidden()
@@ -347,8 +371,7 @@ def admin_group_details(request, group_id):
 """
 
 def admin_group_details(request, group_id):
-    #todo incluir a las categorias de un documento dentro de los tags
-    # o sea añadirle dentro del field tags del document object
+
     if request.user.is_staff and request.user.is_staff:
         context = {}
         group = MendeleyGroup.objects.get(mendeley_id=group_id)
@@ -465,6 +488,7 @@ def admin_group_details(request, group_id):
 
         else:
                 return HttpResponseForbidden()
+
 def admin_users(request):
     if request.user.is_staff and request.user.is_staff:
         users = User.objects.all()
@@ -495,7 +519,7 @@ def admin_add_group(request):
                 try:
                     # login mendeley
                     md.authenticate(mendeley_user, mendeley_password)
-                    groups = md.get_groups()
+                    groups  = md.get_groups()
                     context['groups'] = groups
                     context['mendeley_user'] = mendeley_user
                     context['mendeley_password'] = utils.fernet.encrypt(mendeley_password.encode('utf-8'))

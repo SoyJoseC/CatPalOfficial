@@ -9,14 +9,57 @@
 
 <!--this is because the h1 hides behind the navbar-->
 <br><br><br>
-<h1>Grupos del Usuario</h1>
+<h1>Administrar Grupos</h1>
 
 {%  for error in errors %}
     <div>
         {{ error }}
     </div>
 {% endfor %}
+<div class="d-flex justify-content-center">
 
+                {% if groups.has_other_pages %}
+
+
+                    <nav aria-label="Page navigation">
+
+                            <ul class="pagination">
+                                 <li class="m-2"><span><strong>Páginas</strong></span></li>
+
+                                {% if groups.number != 1 %}
+                                    <li class="page-item">
+                                  <a class="page-link m-2" href="?page=1" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">begin</span>
+                                  </a>
+                                </li>
+                                {% endif %}
+
+
+
+                                {% for n in groups.paginator.page_range %}
+                                  {% if groups.number == n %}
+                                    <li class="page-item active m-2">
+                                      <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
+                                    </li>
+                                  {% elif n > groups.number|add:'-3' and n < groups.number|add:'3' %}
+                                    <li class="page-item m-2"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+
+                                {% if groups.has_next %}
+                                  <li class="page-item m-2">
+                                    <a class="page-link" href="?page={{ groups.paginator.num_pages }}" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only">end</span>
+                                    </a>
+                                  </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+
+            {% endif %}
+        </div>
 <div class="card-columns">
 {% for group in groups %}
 
@@ -52,6 +95,54 @@
         </div>
 
     {% endfor %}
+
     </div>
+
+
+    <div class="d-flex justify-content-center">
+
+                {% if groups.has_other_pages %}
+
+
+                    <nav aria-label="Page navigation">
+
+                            <ul class="pagination">
+                                 <li class="m-2"><span><strong>Páginas</strong></span></li>
+
+                                {% if groups.number != 1 %}
+                                    <li class="page-item">
+                                  <a class="page-link m-2" href="?page=1" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">begin</span>
+                                  </a>
+                                </li>
+                                {% endif %}
+
+
+
+                                {% for n in groups.paginator.page_range %}
+                                  {% if groups.number == n %}
+                                    <li class="page-item active m-2">
+                                      <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
+                                    </li>
+                                  {% elif n > groups.number|add:'-3' and n < groups.number|add:'3' %}
+                                    <li class="page-item m-2"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+
+                                {% if groups.has_next %}
+                                  <li class="page-item m-2">
+                                    <a class="page-link" href="?page={{ groups.paginator.num_pages }}" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only">end</span>
+                                    </a>
+                                  </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+
+            {% endif %}
+        </div>
+
 
 {% endblock %}

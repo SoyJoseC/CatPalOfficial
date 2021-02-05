@@ -15,7 +15,47 @@
         {{ error }}
     </div>
 {% endfor %}
+<div class="d-flex justify-content-center">
 
+                {% if documents.has_other_pages %}
+
+                    <nav aria-label="Page navigation">
+
+                            <ul class="pagination">
+                                <li class="m-2"><span><strong>Páginas</strong></span></li>
+                                {% if documents.number != 1 %}
+                                    <li class="page-item m-2">
+                                  <a class="page-link" href="?page=1" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">begin</span>
+                                  </a>
+                                </li>
+                                {% endif %}
+
+
+
+                                {% for n in documents.paginator.page_range %}
+                                  {% if documents.number == n %}
+                                    <li class="page-item active m-2">
+                                      <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
+                                    </li>
+                                  {% elif n > documents.number|add:'-3' and n < documents.number|add:'3' %}
+                                    <li class="page-item m-2"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+
+                                {% if documents.has_next %}
+                                  <li class="page-item m-2">
+                                    <a class="page-link" href="?page={{ documents.paginator.num_pages }}" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only">end</span>
+                                    </a>
+                                  </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+            {% endif %}
+        </div>
 <div class="card-columns">{% for group in groups %}
 
         <div class="div_group card  text-center">
@@ -46,7 +86,51 @@
         </div>
 
     {% endfor %}
+
+
 </div>
+
+<div class="d-flex justify-content-center">
+
+                {% if documents.has_other_pages %}
+
+                    <nav aria-label="Page navigation">
+
+                            <ul class="pagination">
+                                <li class="m-2"><span><strong>Páginas</strong></span></li>
+                                {% if documents.number != 1 %}
+                                    <li class="page-item m-2">
+                                  <a class="page-link" href="?page=1" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">begin</span>
+                                  </a>
+                                </li>
+                                {% endif %}
+
+
+
+                                {% for n in documents.paginator.page_range %}
+                                  {% if documents.number == n %}
+                                    <li class="page-item active m-2">
+                                      <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
+                                    </li>
+                                  {% elif n > documents.number|add:'-3' and n < documents.number|add:'3' %}
+                                    <li class="page-item m-2"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+
+                                {% if documents.has_next %}
+                                  <li class="page-item m-2">
+                                    <a class="page-link" href="?page={{ documents.paginator.num_pages }}" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only">end</span>
+                                    </a>
+                                  </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+            {% endif %}
+        </div>
 
 
 
