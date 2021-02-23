@@ -199,8 +199,17 @@ def group_details_documents(request, group_id):
     documents_list = group.document_set.all().order_by('id')
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(documents_list, 10)
-    
+    # Obtener un dato de la sesión, estableciendo un valor por defecto ('mini') si el dato requerido no existe
+    amount = request.session.get('amount', 10)
+    paginator = Paginator(documents_list, amount)
+
+    #todo if sent me the amount modify the session variable 'amount'
+    if request.method == 'GET':
+        if request.GET.getlist('amountRadio'):
+            request.session['amount'] = request.GET['amountRadio']
+            amount = request.session.get('amount', 10)
+            paginator = Paginator(documents_list, amount)
+
     try:
         documents = paginator.page(page)
     except PageNotAnInteger:
@@ -210,6 +219,7 @@ def group_details_documents(request, group_id):
 
     context['documents'] = documents
     context['group_id'] = group_id
+
     return render(request, 'group_details_documents.html', context)
 
 
@@ -425,7 +435,7 @@ def admin_group_details(request, group_id):
                 return render(request, 'admin_group_details.html', context)
 
             elif request.POST['action'] == 'synctomendeley':
-                md.authenticate(group.mendeley_username, utils.fernet.decrypt(group.mendeley_password.lstrip("b'").rstrip("'").encode('utf-8')))
+                md.authenticate(group.mendeley_username, utils.decryption(group.mendeley_password))
                 mendeley_group = md.get_group(group.mendeley_id)
                 for doc in group.document_set.all():
                     # get the corresponding Mendeley document

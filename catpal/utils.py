@@ -29,5 +29,11 @@ def node_to_list(node, depth, list):
 def generate_hash():
     return str(uuid.uuid4())
 
+def decryption(element):
+    return fernet.decrypt(element.lstrip("b'").rstrip("'").encode('utf-8'))
+
+def encytption(element):
+    return fernet.encrypt(element.encode('utf-8'))
+
 
 
