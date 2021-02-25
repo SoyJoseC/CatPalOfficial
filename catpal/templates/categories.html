@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n%}
 {% block title %}
     <title>Categorias: {{group.name}}</title>
 {% endblock %}
@@ -9,7 +9,7 @@
 <br>
 <br>
 <br>
-<h1>Categorías del Grupo: {{group.name}}</h1>
+<h1>{% translate "Categories of: " %}{{group.name}}</h1>
 
 
 <form method="post">
@@ -35,23 +35,28 @@
     <br>
     <div class="col-6">
     <div>
-        <input class="btn btn-primary" type="submit" name="action" value="Crear Categoría">
-        <input type="text" name="new_name" placeholder="Nombre de la nueva categoría">
+        <!-- <input class="btn btn-primary" type="submit" name="action" value="Crear Categoría"> -->
+        <button class="btn btn-primary" type="submit" name="action" value="create">{% translate "Create Category" %}</button>
+        <input type="text" name="new_name" placeholder="{% translate "Name" %}">
     </div>
 
     <div>
-        <input  class="btn btn-primary" type="submit" name="action" value="Renombrar">
-        <input  type="text" name="rename" placeholder="Nombre nuevo">
+        <!-- <input  class="btn btn-primary" type="submit" name="action" value="Renombrar"> -->
+        <button  class="btn btn-primary" type="submit" name="action" value="rename">{% translate "Rename" %}</button>
+        <input  type="text" name="rename" placeholder="{% translate "New Name" %}">
     </div>
     <div>
-        <input class="btn btn-primary" type="submit" name="action" value="Combinar">
-        <input type="text" name="merge_to" placeholder="Combinar en ... ">
+        <!--<input class="btn btn-primary" type="submit" name="action" value="Combinar"> -->
+        <button class="btn btn-primary" type="submit" name="action" value="combine">{% translate "Combine into" %}</button>
+        <input type="text" name="merge_to" placeholder="{% translate "Combine into..." %}">
     </div>
 
     <div>
-        <input class="btn btn-danger" type="submit" name="action" value="Pop" id="pop-btn">
+        <!--<input class="btn btn-danger" type="submit" name="action" value="Pop" id="pop-btn"> -->
+        <button class="btn btn-danger" type="submit" name="action" value="pop" id="pop-btn">{% translate "Pop" %}</button>
 
-        <input class="btn btn-danger" type="submit" name="action" value="Eliminar" id="delete-btn">
+        <!--<input class="btn btn-danger" type="submit" name="action" value="Eliminar" id="delete-btn"> -->
+        <button class="btn btn-danger" type="submit" name="action" value="delete" id="delete-btn">{% translate "Delete" %}</button>
     </div>
 
         </div>

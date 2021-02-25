@@ -68,23 +68,23 @@
       {% if user.is_authenticated %}
 
           <li class="nav-item  nav_bar_button">
-          <a class="nav-link" href="{% url 'groups' %}"><i class="fas fa-users"></i>  Mis Grupos</a>
+          <a class="nav-link" href="{% url 'groups' %}"><i class="fas fa-users"></i>  My Groups</a>
 
 
 
 
           {% if user.is_staff %}
           <li class="nav-item  nav_bar_button_admin">
-          <a class="nav-link" href="/admin/"><i class="fas fa-toolbox"></i> Admin Django</a>
+          <a class="nav-link" href="/admin/"><i class="fas fa-toolbox"></i> {% translate "Django's Admin" %}</a>
         </li>
           <li class="nav-item  nav_bar_button_admin">
-          <a class="nav-link" href="{% url 'admin_groups' %}">{%translate "Administrar Grupos"%}</a>
+          <a class="nav-link" href="{% url 'admin_groups' %}">{%translate "Manage Groups"%}</a>
         </li>
           <li class="nav-item  nav_bar_button_admin">
-          <a class="nav-link" href="{% url 'admin_users' %}">{% translate "Administrar Usuarios" %}</a>
+          <a class="nav-link" href="{% url 'admin_users' %}">{% translate "Manage users" %}</a>
         </li>
           <li class="nav-item  nav_bar_button_admin">
-          <a class="nav-link" href="{% url 'admin_add_group' %}">{% translate "Crear Grupos" %}</a>
+          <a class="nav-link" href="{% url 'admin_add_group' %}">{% translate "Add Groups" %}</a>
         </li>
           {% endif %}
 
@@ -101,9 +101,9 @@
           <ul class="navbar-nav nav-flex-icons">
             {% if user.is_authenticated %}
             <li class="nav-item active nav_bar_button">
-          <a class="nav-link" href="{% url 'logout' %}">Salir: {{ user.username }}</a>
+          <a class="nav-link" href="{% url 'logout' %}">{% translate "Logout" %}: {{ user.username }}</a>
               </li><li class="nav-item active nav_bar_button">
-          <a class="nav-link" href="{% url 'edit_profile' %}">Editar perfil</a>
+          <a class="nav-link" href="{% url 'edit_profile' %}">{% translate "Edit profile" %}</a>
               </li>
 
 
@@ -149,12 +149,12 @@
       <br>
 
       <a href="https://github.com/SoyJoseC/CatPalOfficial" target="_blank">
-        <i class="fab fa-github mr-3"></i>  CatPal by: @EdFer2025 @SoyJoseC
+        <i class="fab fa-github mr-3"></i>  {% translate "Catpal by:" %} @EdFer2025 @SoyJoseC
       </a>
       <br>
       <br>
       <div class="footer-copyright py-3">
-      Powered by:
+      {% translate "Powered by:" %}
       <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
     </div>
 

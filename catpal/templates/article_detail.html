@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
     <title>Docs Details</title>
 {% endblock %}
@@ -21,7 +21,7 @@ Tags: {{document.tags}}
 </div>
 <div class="row">
     <div class="col-4">
-        <h5>Categories</h5>
+        <h5>{% translate "Categories" %}</h5>
 <ul>
     {% for element in document.categories.all %}
         <li>{{element}}</li>

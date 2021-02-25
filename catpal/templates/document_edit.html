@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>{{doc.title}}</title>
+    <title>{% translate "Catpal: {{doc.title}} Edit" %}</title>
 {% endblock %}
 
 
@@ -11,11 +11,11 @@
 <br>
 <div class="row">
     <div class="col-12">
-        <h1>{{doc.title}} (Edit)</h1>
+        <h1>{{doc.title}} ({% translate "Edit" %})</h1>
 
         {% if user.is_authenticated %}
             <br />
-            <small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small>
+            <small><a href="{% url 'delete_doc' doc.pk %}">({% translate "Delete" %})</a></small>
         {% endif %}
 
     </div>

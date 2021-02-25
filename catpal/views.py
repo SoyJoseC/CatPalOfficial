@@ -233,20 +233,20 @@ def group_categories(request, group_id):
         data = request.POST
         print(data)
         if 'selected' in data.keys():
-            if data['action'] == 'Crear' and 'new_name' in data.keys():
+            if data['action'] == 'create' and 'new_name' in data.keys():
                 selected = data['selected']
                 new_name = data['new_name']
                 parent = cats.get(cat_id=selected)
                 Category(name=new_name, parent=parent, group=group).save()
 
-            elif data['action'] == 'Renombrar' and 'rename' in data.keys():
+            elif data['action'] == 'rename' and 'rename' in data.keys():
                 selected = data['selected']
                 new_name = data['rename']
                 c = cats.get(cat_id=selected)
                 c.name = new_name
                 c.save()
 
-            elif data['action'] == 'Pop':
+            elif data['action'] == 'pop':
                 selected = data['selected']
                 selected = cats.get(cat_id=selected)
                 for child in selected.childs():
@@ -254,12 +254,12 @@ def group_categories(request, group_id):
                     child.save()
                 selected.delete()
 
-            elif data['action'] == 'Eliminar':
+            elif data['action'] == 'delete':
                 selected = data['selected']
                 selected = Category.objects.get(cat_id=selected)
                 selected.delete()
 
-            elif data['action'] == 'Combinar':
+            elif data['action'] == 'combine':
                 selected = request.POST.getlist('selected')
                 merge_to = data['merge_to']
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
-    <title>Agregar Grupos</title>
+    <title>Catpal: Add Groups</title>
 {% endblock %}
 
 
@@ -10,7 +10,7 @@
 
 
 
-<h1>Agregar Grupos</h1>
+<h1>{% translate  "Add Groups" %}</h1>
 
 {% if errors %}
     <h2 class="error_message"> Error </h2>
@@ -28,7 +28,8 @@
     <input type="hidden" name="form_id" value="user_data">
     {{form_prueba}}
 
-    <input class="btn primary-btn" type="submit" value="Escanear Grupos">
+
+    <button class="btn primary-btn" type="submit" value="Escanear Grupos">{% translate  "Scan groups" %}</button>
 </form>
 
 <style>
@@ -59,7 +60,7 @@
                     <div>
 
 
-                        <span>Acceso:</span>
+                        <span>{% translate  "Access:" %}</span>
                         {% if group.access_level == "private"%}
 
                         {% elif group.access_level == "invite_only" %}
@@ -74,7 +75,7 @@
                         <br>
                         <a href="{{group.link}}">{{group.link}}</a>
                         <br>
-                        <span>Rol:</span>
+                        <span>{% translate  "Role:" %}</span>
                         {{group.role}}
                         <br>
                         <span>Tags:</span>
@@ -86,15 +87,17 @@
             {% endfor %}
         </div>
         <div class="col-2" id="addGroupButton">
-            <h3>Acciones</h3>
-            <input type="submit" class="btn primary-btn" value="Añadir Grupos" style="position: fixed; float: bottom-auto"></div>
+            <h3>Actions</h3>
+            <!-- <input type="submit" class="btn primary-btn" value="Añadir Grupos" style="position: fixed; float: bottom-auto"> -->
+            <button type="submit" class="btn primary-btn" value="Añadir Grupos" style="position: fixed; float: bottom-auto;">{% translate  "Add groups" %}</button>
+        </div>
     </div>
 
             <div class="row">
                 <div class="col-12"><div class="d-flex justify-content-center">
 
                 {% if groups.has_other_pages %}
-            <span><strong>Páginas </strong></span>
+            <span><strong>{% translate  "Pages" %} </strong></span>
                     <nav aria-label="Page navigation">
 
                             <ul class="pagination">

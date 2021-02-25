@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
-    <title>Detalles de Usuario</title>
+    <title>{% translate "Catpal: User's Details" %}</title>
 {% endblock %}
 
 
@@ -18,10 +18,10 @@
 
 <h1>{{ user.username }}</h1>
 
-<p> Nombre: {{ user.first_name }}</p>
-<p> Apellidos: {{ user.last_name }}</p>
+<p> {% translate "Name:" %} {{ user.first_name }}</p>
+<p> {% translate "Lastname" %} {{ user.last_name }}</p>
 
 
-<button> Guardar cambios</button>
+<button> {% translate "Save Changes" %}</button>
 
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Administrar Usuarios</title>
+    <title>{% translate "Catpal: Manage Users" %}</title>
 {% endblock %}
 
 
@@ -9,7 +9,7 @@
 
 <!--this is because the h1 hides behind the navbar-->
 <br><br><br>
-<h1>Usuarios</h1>
+<h1>{% translate "Users" %}</h1>
 
 {%  for error in errors %}
     <div>
@@ -34,7 +34,7 @@
     </div>
 {% endfor %}
 
-<button class="btn btn-dark">Añadir Usuario</button>
+<button class="btn btn-dark">{% translate "Add User" %}</button>
 
 
 {% endblock %}

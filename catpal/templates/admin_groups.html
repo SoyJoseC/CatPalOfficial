@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n%}
 {% block title %}
     <title>Select Group</title>
 {% endblock %}
@@ -9,7 +9,7 @@
 
 <!--this is because the h1 hides behind the navbar-->
 <br><br><br>
-<h1>Administrar Grupos</h1>
+<h1>{% translate "Manage Groups" %}</h1>
 
 {%  for error in errors %}
     <div>
@@ -24,7 +24,7 @@
                     <nav aria-label="Page navigation">
 
                             <ul class="pagination">
-                                 <li class="m-2"><span><strong>Páginas</strong></span></li>
+                                 <li class="m-2"><span><strong>{% translate "Pages" %}</strong></span></li>
 
                                 {% if groups.number != 1 %}
                                     <li class="page-item">
@@ -69,10 +69,10 @@
             </h3></div>
 
 
-                <div class="card-body">Contiene {{group.get_docs_amount}} documento(s).
+                <div class="card-body">{% translate "Contains" %} {{group.get_docs_amount}} {% translate "document(s)" %}.
                 <br>
 
-                <span>Acceso:</span>
+                <span>{% translate "Access:" %}</span>
                 {% if group.access_level == "private"%}
 
                 {% elif group.access_level == "invite_only" %}
@@ -107,7 +107,7 @@
                     <nav aria-label="Page navigation">
 
                             <ul class="pagination">
-                                 <li class="m-2"><span><strong>Páginas</strong></span></li>
+                                 <li class="m-2"><span><strong>{% translate "Pagesa" %}</strong></span></li>
 
                                 {% if groups.number != 1 %}
                                     <li class="page-item">
