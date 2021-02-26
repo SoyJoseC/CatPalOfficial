@@ -10,8 +10,8 @@
 <div class="form-group">
     <form method="post">
         {% csrf_token %}
-        <strong>Are you sure?</strong>
-        <button class="btn btn-secondary">Delete</button>
+        <strong>{% translate "Are you sure?" %}</strong>
+        <button class="btn btn-secondary">{% translate "Delete" %}</button>
     </form>
     </div>
 

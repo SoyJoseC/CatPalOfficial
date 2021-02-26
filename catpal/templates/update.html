@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 
 {% block title %}
     <title>Update Doc</title>
@@ -7,7 +7,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    <h1>Update {{document.title}}</h1>
+    <h1>{% translate "Update" %} {{document.title}}</h1>
 <br /> <br />
 <style>
     .form-control{
@@ -18,11 +18,11 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">Update</button>
+    <button class="btn btn-secondary">{% translate "Update" %}</button>
 </form>
 </div>
 
 {% else %}
-    You're not allowed here!
+    {% translate "You're not allowed here!" %}
 {% endif%}
     {% endblock %}

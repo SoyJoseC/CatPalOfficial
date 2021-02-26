@@ -20,7 +20,7 @@
 <h1>{% translate  "Group:" %} {{ group.name }}</h1>
 
 <p> <b>Id:</b> {{ group.mendeley_id }}</p>
-<p> <b>Administrator:</b> {{ group.mendeley_username }}</p>
+<p> <b>{% translate "Administrator: " %}</b> {{ group.mendeley_username }}</p>
 
 
 <!-- <a class='btn btn-primary'href="{% url 'group_details_documents' group_id=group.mendeley_id %}">Documentos del Grupo</a> -->

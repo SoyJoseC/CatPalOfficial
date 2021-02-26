@@ -1,87 +1,94 @@
 {% extends 'base.html' %}
 {% load i18n%}
 {% block title %}
-    <title>Categorias: {{group.name}}</title>
+    <title>{% translate "Categorias: {{group.name}}" %}</title>
 {% endblock %}
 
 {% block content %}
-
-<br>
-<br>
-<br>
-<h1>{% translate "Categories of: " %}{{group.name}}</h1>
-
-
-<form method="post">
-    {% csrf_token %}
+<div class="container">
     <div class="row">
-    <div class="col-6">
-
-{% for category in categories_tree %}
-
-        {% if category == categories_tree|first %}
-
-            <input class = 'form-check-input root' type="checkbox" value="{{category.category.cat_id}}" name="selected" id = "{{category.category.cat_id}}">
-            <label class = 'form-check-label' for="{{category.category.cat_id}}">{{category.str}}</label>
-        <br>
-        {% else %}
-    <input class = 'form-check-input' type="checkbox" value="{{category.category.cat_id}}" name="selected" id = "{{category.category.cat_id}}">
-    <label class = 'form-check-label' for="{{category.category.cat_id}}">{{category.str}}</label>
+    <div class="col-12">
+    <h1>{% translate "Categories of: " %}{{group.name}}</h1>
+    <a class='btn btn-primary'href="{% url 'group_details_documents' group_id=group.mendeley_id %}">{% translate  "Back to Group's Documents" %}</a></div>
     <br>
-{% endif %}
-
-{% endfor %}
     </div>
-    <br>
-    <div class="col-6">
-    <div>
-        <!-- <input class="btn btn-primary" type="submit" name="action" value="Crear Categoría"> -->
-        <button class="btn btn-primary" type="submit" name="action" value="create">{% translate "Create Category" %}</button>
-        <input type="text" name="new_name" placeholder="{% translate "Name" %}">
+    <div class="row">
+    <div class="col-12">
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+
+                {% for category in categories_tree %}
+
+                        {% if category == categories_tree|first %}
+
+                            <input class = 'form-check-input root' type="checkbox" value="{{category.category.cat_id}}" name="selected" id = "{{category.category.cat_id}}">
+                            <label class = 'form-check-label' for="{{category.category.cat_id}}">{{category.str}}</label>
+                        <br>
+                        {% else %}
+                    <input class = 'form-check-input' type="checkbox" value="{{category.category.cat_id}}" name="selected" id = "{{category.category.cat_id}}">
+                    <label class = 'form-check-label' for="{{category.category.cat_id}}">{{category.str}}</label>
+                    <br>
+                {% endif %}
+
+                {% endfor %}
+                </div>
+                <br>
+                <div class="col-6">
+                <div>
+                    <!-- <input class="btn btn-primary" type="submit" name="action" value="Crear Categoría"> -->
+                    <button class="btn btn-primary" type="submit" name="action" value="create">{% translate "Create Category" %}</button>
+                    <input type="text" name="new_name" placeholder="{% translate "Name" %}">
+                </div>
+
+                <div>
+                    <!-- <input  class="btn btn-primary" type="submit" name="action" value="Renombrar"> -->
+                    <button  class="btn btn-primary" type="submit" name="action" value="rename">{% translate "Rename" %}</button>
+                    <input  type="text" name="rename" placeholder="{% translate "New Name" %}">
+                </div>
+                <div>
+                    <!--<input class="btn btn-primary" type="submit" name="action" value="Combinar"> -->
+                    <button class="btn btn-primary" type="submit" name="action" value="combine">{% translate "Combine into" %}</button>
+                    <input type="text" name="merge_to" placeholder="{% translate "Combine into..." %}">
+                </div>
+
+                <div>
+                    <!--<input class="btn btn-danger" type="submit" name="action" value="Pop" id="pop-btn"> -->
+                    <button class="btn btn-danger" type="submit" name="action" value="pop" id="pop-btn">{% translate "Pop" %}</button>
+
+                    <!--<input class="btn btn-danger" type="submit" name="action" value="Eliminar" id="delete-btn"> -->
+                    <button class="btn btn-danger" type="submit" name="action" value="delete" id="delete-btn">{% translate "Delete" %}</button>
+                </div>
+
+                    </div>
+                </div>
+            <script>
+
+
+
+            var root = document.getElementsByClassName('root')[0];
+            root.addEventListener('change', function f() {
+                if (root.checked){
+                    document.getElementById('pop-btn').disabled = true
+                    document.getElementById('delete-btn').disabled = true
+
+                }
+                else {
+                    document.getElementById('pop-btn').disabled = false
+                    document.getElementById('delete-btn').disabled = false
+
+                }
+
+            });
+
+        </script>
+        </form>
     </div>
-
-    <div>
-        <!-- <input  class="btn btn-primary" type="submit" name="action" value="Renombrar"> -->
-        <button  class="btn btn-primary" type="submit" name="action" value="rename">{% translate "Rename" %}</button>
-        <input  type="text" name="rename" placeholder="{% translate "New Name" %}">
-    </div>
-    <div>
-        <!--<input class="btn btn-primary" type="submit" name="action" value="Combinar"> -->
-        <button class="btn btn-primary" type="submit" name="action" value="combine">{% translate "Combine into" %}</button>
-        <input type="text" name="merge_to" placeholder="{% translate "Combine into..." %}">
-    </div>
-
-    <div>
-        <!--<input class="btn btn-danger" type="submit" name="action" value="Pop" id="pop-btn"> -->
-        <button class="btn btn-danger" type="submit" name="action" value="pop" id="pop-btn">{% translate "Pop" %}</button>
-
-        <!--<input class="btn btn-danger" type="submit" name="action" value="Eliminar" id="delete-btn"> -->
-        <button class="btn btn-danger" type="submit" name="action" value="delete" id="delete-btn">{% translate "Delete" %}</button>
-    </div>
-
-        </div>
-        </div>
-    <script>
+</div>
+</div>
 
 
-
-    var root = document.getElementsByClassName('root')[0];
-    root.addEventListener('change', function f() {
-        if (root.checked){
-            document.getElementById('pop-btn').disabled = true
-            document.getElementById('delete-btn').disabled = true
-
-        }
-        else {
-            document.getElementById('pop-btn').disabled = false
-            document.getElementById('delete-btn').disabled = false
-
-        }
-
-    });
-
-</script>
-</form>
 
 
 

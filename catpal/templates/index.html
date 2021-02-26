@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}
-    <title>CatPal</title>
+    <title>{% translate "CatPal: Inicio" %}</title>
 {% endblock %}
 {% block content%}
 
@@ -43,10 +43,10 @@
             <h3>{% translate "An amazing tool for the management of Mendeley's documents" %}</h3>
 
           {% if not user.is_authenticated %}
-          <a href="{% url 'login' %}" class="btn btn-outline-white btn-lg">Login
+          <a href="{% url 'login' %}" class="btn btn-outline-white btn-lg">{% translate "Login" %}
             <i class="fas fa-sign-in-alt"></i>
           </a>
-          <a href="{% url 'register' %}" class="btn btn-outline-white btn-lg">Sign up
+          <a href="{% url 'register' %}" class="btn btn-outline-white btn-lg">{% translate "Sign up" %}
             <i class="fas fa-sign-in-alt"></i>
           </a>
             {% endif %}

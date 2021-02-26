@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
-    <title>Group "{{group.name}}" Documents</title>
+    <title>{% translate "Catpal: Group's Documents" %}</title>
 {% endblock %}
 
 {% block content %}
@@ -41,23 +41,23 @@
 
 <div class="row">
     <div class="col-10">
-        <h1>Group "{{group.name}}"</h1>
+        <h1>{% translate "Group" %}"{{group.name}}"</h1>
 
 
 
 
 
         <br>
-        <h3>Detalles</h3>
+        <h3>{% translate "Details" %}</h3>
         <hr>
         <p> <b>Id:</b> {{ group.mendeley_id }}</p>
-        <p> <b>Administrador:</b> {{ group.mendeley_username }}</p>
+        <p> <b>{% translate "Administrator: " %}</b> {{ group.mendeley_username }}</p>
 
 
 
         <br>
         <br>
-        <h3>Documentos</h3>
+        <h3>{% translate "Documents" %}</h3>
         <br>
         <div class="d-flex justify-content-center">
 
@@ -66,7 +66,7 @@
                     <nav aria-label="Page navigation">
 
                             <ul class="pagination">
-                                <li class="m-2"><span><strong>Páginas</strong></span></li>
+                                <li class="m-2"><span><strong>{% translate "Pages" %}</strong></span></li>
                                 {% if documents.number != 1 %}
                                     <li class="page-item m-2">
                                   <a class="page-link" href="?page=1" aria-label="Previous">
@@ -109,17 +109,17 @@
                     <a href="{% url 'document_detail' group.mendeley_id doc.mendeley_id %}">{{doc.title|truncatechars:100}}</a>
                     {{doc.tags|truncatechars:50}}
                     <br />
-                    <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">(Edit)</a>
-                    </small>-<small><a href="{% url 'delete_doc' doc.pk %}">(Delete)</a></small><br />
+                    <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">({% translate "Edit" %})</a>
+                    </small>-<small><a href="{% url 'delete_doc' doc.pk %}">({% translate "Delete" %})</a></small><br />
                 </li>
             {% empty %}
-                <p>El grupo no contiene documentos actualmente.</p>
+                <p>{% translate "No documents in the group." %}</p>
             {% endfor %}
 
         </ol>
 
         <form action="" id="amountForm"><!--Todo Items per page <form-->
-            <span><p class="m-2">Cantidad de elementos por página.</p></span>
+            <span><p class="m-2">{% translate "Amount of items per page" %}</p></span>
         <div class="form-check form-check-inline">
               <input
                 class="form-check-input"
@@ -150,7 +150,7 @@
               />
               <label class="form-check-label" for="inlineRadio3">20</label>
         </div>
-            <button class="btn btn-secondary" value="amountPerPage" name="changePerPage" type="submit">Aceptar</button>
+            <button class="btn btn-secondary" value="amountPerPage" name="changePerPage" type="submit">{% translate "Accept" %}</button>
         </form>
 
 
@@ -163,7 +163,7 @@
                     <nav aria-label="Page navigation">
 
                             <ul class="pagination">
-                                <li class="m-2"><span><strong>Páginas</strong></span></li>
+                                <li class="m-2"><span><strong>{% translate "Pages" %}</strong></span></li>
                                 {% if documents.number != 1 %}
                                     <li class="page-item m-2">
                                   <a class="page-link" href="?page=1" aria-label="Previous">
@@ -200,10 +200,10 @@
     </div>
     {% if user.is_staff %}
             <div class="col-2 jumbotron   text-center fixed" style="height: 20rem;">
-                    <h3>Acciones</h3>
+                    <h3>{% translate "Actions" %}</h3>
 
-                    <a href="{%url 'admin_group_details' group.mendeley_id %}"><button class="btn btn-primary">Administrar Grupo {{group.name}}</button></a>
-                    <a href="{%url 'group_categories' group.mendeley_id %}"><button class="btn btn-primary">Editar Categorías del Grupo</button></a>
+                    <a href="{%url 'admin_group_details' group.mendeley_id %}"><button class="btn btn-primary">{% translate "Manage Group " %}{{group.name}}</button></a>
+                    <a href="{%url 'group_categories' group.mendeley_id %}"><button class="btn btn-primary">{% translate "Edit Group's Categories" %}</button></a>
 
                 </div>
     {% endif %}

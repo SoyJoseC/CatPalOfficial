@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
     <title>{% translate "Catpal: {{doc.title}} Edit" %}</title>
 {% endblock %}
@@ -44,12 +44,14 @@
                         {{element.str}}
                     </li>
                 {% endfor %}
-                    <input type="submit" name="action" value="Guardar">
+                    <!-- <input type="submit" name="action" value="Guardar">-->
+                <button type="submit" name="action" value="Guardar">{% translate "Save" %}</button>
+
             </ul>
         </div>
 
         <div class="col-7">
-            <h5>Abstract</h5>
+            <h5>{% translate "Abstract" %}</h5>
             <p>{{doc.abstract}}</p>
         </div>
     </div>
