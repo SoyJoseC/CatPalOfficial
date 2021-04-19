@@ -70,6 +70,11 @@ class Document(models.Model):
     categories = models.ManyToManyField(Category)
     groups = models.ManyToManyField(MendeleyGroup)
 
+    year = models.IntegerField(max_length=4, blank= True)
+    author = models.CharField(max_length=100, blank= True)
+    keywords = models.CharField(max_length='512', blank= True)
+    classified = models.BooleanField()
+
     def __str__(self):
         return self.title
 
