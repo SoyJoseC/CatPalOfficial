@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n%}
 {% block title %}
-    <title>{% translate "Categorias: {{group.name}}" %}</title>
+    <title>{% translate "Categorias: " %}{{group.name}}</title>
 {% endblock %}
 
 {% block content %}
@@ -38,8 +38,8 @@
                 <div class="col-6">
                 <div>
                     <!-- <input class="btn btn-primary" type="submit" name="action" value="Crear Categoría"> -->
-                    <button class="btn btn-primary" type="submit" name="action" value="create">{% translate "Create Category" %}</button>
-                    <input type="text" name="new_name" placeholder="{% translate "Name" %}">
+                    <button class="btn btn-primary" type="submit" name="action" value="create" id='createButton'>{% translate "Create Category" %}</button>
+                    <input type="text"  name="new_name" placeholder="{% translate "Name" %}" id = 'createInput'>
                 </div>
 
                 <div>
@@ -58,7 +58,7 @@
                     <button class="btn btn-danger" type="submit" name="action" value="pop" id="pop-btn">{% translate "Pop" %}</button>
 
                     <!--<input class="btn btn-danger" type="submit" name="action" value="Eliminar" id="delete-btn"> -->
-                    <button class="btn btn-danger" type="submit" name="action" value="delete" id="delete-btn">{% translate "Delete" %}</button>
+                    <button class="btn btn-danger"  type="submit" name="action" value="delete" id="delete-btn">{% translate "Delete" %}</button>
                 </div>
 
                     </div>
@@ -70,18 +70,28 @@
             var root = document.getElementsByClassName('root')[0];
             root.addEventListener('change', function f() {
                 if (root.checked){
-                    document.getElementById('pop-btn').disabled = true
-                    document.getElementById('delete-btn').disabled = true
+                    document.getElementById('pop-btn').disabled = true;
+                    document.getElementById('delete-btn').disabled = true;
 
                 }
                 else {
-                    document.getElementById('pop-btn').disabled = false
-                    document.getElementById('delete-btn').disabled = false
+                    document.getElementById('pop-btn').disabled = false;
+                    document.getElementById('delete-btn').disabled = false;
 
-                }
-
+                }           
             });
 
+            var createInput = document.getElementById('createInput');
+            document.getElementById('createButton').disabled = true;
+            createInput.addEventListener('keypress', function f(){
+                if(createInput.value.length>=3){
+                    document.getElementById('createButton').disabled = false;
+                }
+                else{
+                    document.getElementById('createButton').disabled = true;
+                }
+            });
+            
         </script>
         </form>
     </div>

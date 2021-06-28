@@ -19,8 +19,9 @@ def tree_to_list(root):
 
 
 def node_to_list(node, depth, list):
-    identation = '_._._.'
-    list.append({'str':(identation * depth) + node.name, 'category': node})
+    #identation = '_._._.'
+    identation = '__'
+    list.append({'str':(identation * depth)+ "\\" + node.name, 'category': node})
     # run for each child
     for child in node.childs():
         node_to_list(child, depth+1, list)
