@@ -109,8 +109,7 @@
                     <a href="{% url 'document_detail' group.mendeley_id doc.mendeley_id %}">{{doc.title|truncatechars:100}}</a>
                     {{doc.tags|truncatechars:50}}
                     <br />
-                    <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">({% translate "Edit" %})</a>
-                    </small>-<small><a href="{% url 'delete_doc' doc.pk %}">({% translate "Delete" %})</a></small><br />
+                    <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">({% translate "Edit" %})</a> </small>
                 </li>
             {% empty %}
                 <p>{% translate "No documents in the group." %}</p>
@@ -192,7 +191,8 @@
                                       <span class="sr-only">end</span>
                                     </a>
                                   </li>
-                                {% endif %}   
+                                {% endif %}
+                                <p> of {{documents.paginator.num_pages}}</p>
                             </ul> 
                         </nav>
             {% endif %}

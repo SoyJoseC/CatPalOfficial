@@ -40,7 +40,7 @@
   <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white dropdown">
       <div class="container">
 
         <!-- Brand Logo and HyperLink -->
@@ -88,8 +88,6 @@
         </li>
           {% endif %}
 
-       
-
     {% endif %}
 
 
@@ -105,19 +103,11 @@
               </li><li class="nav-item active nav_bar_button">
           <a class="nav-link" href="{% url 'edit_profile' %}">{% translate "Edit profile" %}</a>
               </li>
-
-
       </ul>
-
-
 
               {% else %}
 
               {% endif %}
-        </li>
-
-
-          </ul>
 
         </div>
 

@@ -6,7 +6,7 @@ config = None
 # print(os.getcwd())
 with open("./catpal/Mendeley/config.json", 'r') as fh:
     config = json.loads(fh.read())
-
+#todo
 key = config["ENC_KEY"].encode('utf-8')
 fernet = Fernet(key)
 
