@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from mendeley import Mendeley
 import pandas as pd
-from catpal.Mendeley import logger, utils
+from . import logger, utils
 import os
 import json
 import requests

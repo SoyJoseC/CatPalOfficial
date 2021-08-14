@@ -420,9 +420,9 @@ def admin_group_details(request, group_id):
                         doc = Document.objects.get(mendeley_id=mendeley_doc.id)
                         doc.title = mendeley_doc.title
                         doc.abstract = mendeley_doc.abstract
-                        doc.author= mendeley_doc.author
-                        doc.keywords= mendeley_doc.keywords
-                        doc.year = mendeley_doc.year
+                        #doc.author= mendeley_doc.author
+                        #doc.keywords= mendeley_doc.keywords 
+                        #doc.year = mendeley_doc.year
                         doc.tags = ', '.join(mendeley_doc.tags) if mendeley_doc.tags is not None else []
 
                         doc.save()

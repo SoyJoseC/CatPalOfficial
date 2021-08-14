@@ -1,11 +1,14 @@
 from django.db import models
 from django.urls import reverse
 from django_cryptography.fields import encrypt
-from catpal.utils import generate_hash
+from .utils import generate_hash
 from datetime import date
 from django.utils import timezone
 
 # Create your models here.
+
+
+
 class MendeleyGroup(models.Model):
     # Mendeley User to handle the group
     mendeley_username = models.CharField(max_length=250)
