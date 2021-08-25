@@ -31,23 +31,23 @@
     </div>
 
     <div class="row">
-        <div class="col-5">
+        <div class="col-md">
             <h5>Categories</h5>
-            <ul>
-                {% for element in cat_tree %}
-                    <li>
-                        {% if element.has_cat %}
-                            <input type="checkbox" name="cats" value="{{element.category.cat_id}}" checked="true">
-                        {% else %}
-                            <input type="checkbox" name="cats" value="{{element.category.cat_id}}" >
-                        {% endif %}
-                        {{element.str}}
-                    </li>
-                {% endfor %}
-                    <!-- <input type="submit" name="action" value="Guardar">-->
-                <button type="submit" name="action" value="Guardar">{% translate "Save" %}</button>
+            {% for category in cat_tree %}
+            
+                        {% if category.has_cat %}
+                            <input class = 'form-check-input' type="checkbox" name="cats" value="{{category.category.cat_id}}" checked="true">
+                            <label class = 'form-check-label' for="{{category.category.cat_id}}">{{category.str}}</label>
+                            {% else %}
+                            <input class = 'form-check-input' type="checkbox" name="cats" value="{{category.category.cat_id}}" >
+                            <label class = 'form-check-label' for="{{category.category.cat_id}}">{{category.str}}</label>
+                            {% endif %}
+                        
+                    <br>
 
-            </ul>
+                {% endfor %}
+                <button class = "btn btn-primary" type="submit" name="action" value="Guardar">{% translate "Save" %}</button>
+
         </div>
 
         <div class="col-7">

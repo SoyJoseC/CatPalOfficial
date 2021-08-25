@@ -1,11 +1,14 @@
 from django.db import models
 from django.urls import reverse
 from django_cryptography.fields import encrypt
-from catpal.utils import generate_hash
-
-
+from .utils import generate_hash
+from datetime import date
+from django.utils import timezone
 
 # Create your models here.
+
+
+
 class MendeleyGroup(models.Model):
     # Mendeley User to handle the group
     mendeley_username = models.CharField(max_length=250)
@@ -69,6 +72,12 @@ class Document(models.Model):
     abstract = models.TextField(null=True)
     categories = models.ManyToManyField(Category)
     groups = models.ManyToManyField(MendeleyGroup)
+
+    year = models.DateTimeField(default=timezone.now())
+    keywords = models.CharField(max_length=250, blank=True)
+    author = models.CharField(max_length=100, blank=True)
+
+    classified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

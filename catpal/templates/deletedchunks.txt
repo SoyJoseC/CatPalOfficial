@@ -1,0 +1,64 @@
+<div class="col-8">
+        <br>
+        <h3>{% translate  "Manage Users" %}</h3>
+        <div class="row">
+        <div class="col-4 user-col">
+            <h3>{% translate  "Users" %}</h3>
+            <div id="all-users-checks">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% for user in all_users %}
+                        <div>
+                            <input type="checkbox" name="user" value="{{user.id}}">
+                            <label for="{{user.username}}">{{user.username}}</label>
+                                <br>
+                        </div>
+
+                    {% endfor %}
+                    <input type="hidden" name="action" value="adduser">
+                    <!-- <input type="submit" id="moveto" class = "btn btn-primary" value="Mover al Grupo"> -->
+                    <button type="submit" id="moveto" class = "btn btn-primary" value="Mover al Grupo">{% translate  "Add to the group" %}</button>
+                </form>
+            </div>
+
+    </div>
+            <div class="col-1">
+                
+            </div>
+    <div class="col-5 g-user-col">
+        <div>
+            <br>
+            <h3>{% translate  "Members of the group" %}</h3>
+                <div id="g-checks">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {% for user in group_users %}
+                             <input type="checkbox" name="user" value="{{user.id}}">
+                            <label for="{{user.username}}">{{user.username}}</label>
+                            <br>
+                        {% endfor %}
+                        <input type="hidden" name="action" value="removeuser">
+                        <!-- <input type="submit" class="btn btn btn-danger" id="removefrom" name="removeuser" value="Remover del Grupo"> -->
+                        <button type="submit" class="btn btn btn-danger" id="removefrom" name="removeuser" value="Remover del Grupo">Remove from the group</button>
+                    </form>
+                </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<div class="row">
+    <div id="Synchronized_detected_changes">
+        {% if sync_changes %}
+            <h3>{% translate  "Changes detected" %}</h3>
+            {% for change in sync_changes %}
+                <p>{{change.title}}</p>
+            {% endfor %}
+        {% endif%}
+    </div>
+</div>    

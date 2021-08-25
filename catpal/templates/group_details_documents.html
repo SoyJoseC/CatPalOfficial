@@ -40,7 +40,7 @@
 
 
 <div class="row">
-    <div class="col-10">
+    <div class="col-8">
         <h1>{% translate "Group" %}"{{group.name}}"</h1>
 
 
@@ -109,8 +109,7 @@
                     <a href="{% url 'document_detail' group.mendeley_id doc.mendeley_id %}">{{doc.title|truncatechars:100}}</a>
                     {{doc.tags|truncatechars:50}}
                     <br />
-                    <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">({% translate "Edit" %})</a>
-                    </small>-<small><a href="{% url 'delete_doc' doc.pk %}">({% translate "Delete" %})</a></small><br />
+                    <small><a href="{% url 'document_edit' group.mendeley_id doc.mendeley_id %}">({% translate "Edit" %})</a> </small>
                 </li>
             {% empty %}
                 <p>{% translate "No documents in the group." %}</p>
@@ -118,7 +117,7 @@
 
         </ol>
 
-        <form action="" id="amountForm"><!--Todo Items per page <form-->
+        <form action="" id="amountForm" style="margin: 5rem;"><!--Todo Items per page <form-->
             <span><p class="m-2">{% translate "Amount of items per page" %}</p></span>
         <div class="form-check form-check-inline">
               <input
@@ -192,14 +191,15 @@
                                       <span class="sr-only">end</span>
                                     </a>
                                   </li>
-                                {% endif %}   
+                                {% endif %}
+                                <p> of {{documents.paginator.num_pages}}</p>
                             </ul> 
                         </nav>
             {% endif %}
         </div>
     </div>
     {% if user.is_staff %}
-            <div class="col-2 jumbotron   text-center fixed" style="height: 20rem;">
+            <div class="col-md jumbotron   text-center" style="max-height: 15rem; min-width: 115px;">
                     <h3>{% translate "Actions" %}</h3>
 
                     <a href="{%url 'admin_group_details' group.mendeley_id %}"><button class="btn btn-primary">{% translate "Manage Group " %}{{group.name}}</button></a>

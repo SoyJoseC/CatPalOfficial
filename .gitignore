@@ -2,6 +2,4 @@ db.sqlite3
 venv/
 catpal/__pycache__/
 members/__pycache__/
-catpal/migrations/*
-members/migrations/*
 djangoapps/*
