@@ -237,7 +237,15 @@ def group_categories(request, group_id):
                 selected = data['selected']
                 new_name = data['new_name']
                 parent = cats.get(cat_id=selected)
-                Category(name=new_name, parent=parent, group=group).save()
+                name_list = list( map(lambda el: el.strip(), new_name.split(',')))
+                if len(name_list) == 1:
+                    Category(name=new_name, parent=parent, group=group).save()
+                elif len(name_list)>1:
+                    for cat_name in name_list:
+                        if cat_name != "": #TODO change comprobation to isAlphaNum
+                            Category(name=cat_name, parent=parent, group=group).save()
+                
+                #Category(name=new_name, parent=parent, group=group).save()
 
             elif data['action'] == 'rename' and 'rename' in data.keys():
                 selected = data['selected']
@@ -255,9 +263,14 @@ def group_categories(request, group_id):
                 selected.delete()
 
             elif data['action'] == 'delete':
-                selected = data['selected']
-                selected = Category.objects.get(cat_id=selected)
-                selected.delete()
+                selected = request.POST.getlist('selected')
+                if len(selected)>1:
+                    for el in selected:
+                        aux = Category.objects.get(cat_id=el)
+                        aux.delete()
+                else:
+                    aux = Category.objects.get(cat_id=selected[0])
+                    aux.delete()
 
             elif data['action'] == 'combine':
                 selected = request.POST.getlist('selected')
@@ -407,6 +420,9 @@ def admin_group_details(request, group_id):
                         doc = Document.objects.get(mendeley_id=mendeley_doc.id)
                         doc.title = mendeley_doc.title
                         doc.abstract = mendeley_doc.abstract
+                        #doc.author= mendeley_doc.author
+                        #doc.keywords= mendeley_doc.keywords 
+                        #doc.year = mendeley_doc.year
                         doc.tags = ', '.join(mendeley_doc.tags) if mendeley_doc.tags is not None else []
 
                         doc.save()
