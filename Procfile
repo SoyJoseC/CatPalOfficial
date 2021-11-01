@@ -1,0 +1,1 @@
+web: gunicorn catpalsite.wsgi --log-file -
