@@ -12,14 +12,7 @@ future==0.14.3
 gunicorn==20.1.0
 memoized-property==1.0.2
 mendeley==0.3.2
-mkl-fft
-mkl-random
-mkl-service
-numexpr
-numpy
-oauthlib==0.7.2
-pandas
-psycopg2
+mkl
 psycopg2-binary==2.9.1
 pycparser==2.20
 python-dateutil
