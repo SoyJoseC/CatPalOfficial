@@ -4,3 +4,8 @@ catpal/__pycache__/
 catpalsite/__pycache__/
 members/__pycache__/
 djangoapps/*
+# Text backup files
+*.bak
+
+# Database
+*.sqlite3
