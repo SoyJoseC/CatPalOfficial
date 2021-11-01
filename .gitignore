@@ -4,6 +4,7 @@ catpal/__pycache__/
 catpalsite/__pycache__/
 members/__pycache__/
 djangoapps/*
+staticfiles/*
 # Text backup files
 *.bak
 
