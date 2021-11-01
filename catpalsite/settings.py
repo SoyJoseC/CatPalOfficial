@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.25.70', '192.168.25.85', 'catpal.cneuro.cu', '192.168.36.1' , ]
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.25.70', '192.168.25.85', 'catpal.cneuro.cu', '192.168.36.1' , 'stormy-reaches-42640.herokuapp.com' ]
 
 
 # Application definition
